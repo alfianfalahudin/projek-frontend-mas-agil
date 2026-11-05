@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teknisi MikroTik — Jasa setting &amp; perbaikan MikroTik remote</title>
+  <meta name="description" content="Jasa setting MikroTik remote: load balance, hotspot, PPPoE, sampai perbaikan jaringan. Lingkup kerja, estimasi waktu, dan bukti hasil ditulis di setiap paket." />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace'],
+          },
+          colors: {
+            pageBg: '#F2F2F5',
+            limeNeon: '#D6FF38',
+            limeHover: '#c8f522',
+            purpleAccent: '#9A6AFF',
+            purpleDeep: '#7A5AF8',
+            purpleSoft: '#EBE4FF',
+            darkInk: '#111113',
+            mutedText: '#5A5A64',
+            cardGray: '#F5F5F7',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #F2F2F5;
+      color: #111113;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Floating animation for the router card illustration */
+    @keyframes floatCard {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-7px) rotate(0.4deg);
+      }
+    }
+
+    @keyframes pulsePixel {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.7;
+        transform: scale(0.9);
+      }
+    }
+
+    .card-float {
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    .pixel-blink {
+      animation: pulsePixel 3.8s ease-in-out infinite;
+    }
+
+    .pixel-blink-delayed {
+      animation: pulsePixel 4.5s ease-in-out 1.4s infinite;
+    }
+
+    /* Smooth hover lift for cards */
+    .feature-box {
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  background-color 0.28s ease;
+    }
+    .feature-box:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .arrow-link svg {
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .arrow-link:hover svg {
+      transform: translate(2px, -2px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .card-float,
+      .pixel-blink,
+      .pixel-blink-delayed {
+        animation: none !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0;
+      left: -9999px;
+      z-index: 100;
+    }
+    .skip-link:focus {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 100;
+      background: #111113;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      width: auto;
+      height: auto;
+      overflow: visible;
+    }
+
+    /* Checker pattern used in the closing CTA */
+    .pixel-checker {
+      background-image: conic-gradient(#D6FF38 25%, transparent 0 50%, #9A6AFF 0 75%, transparent 0);
+      background-size: 40px 40px;
+    }
+
+    @media print {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body id="top" class="min-h-screen antialiased selection:bg-limeNeon selection:text-darkInk">
+
+  <a href="#main" class="skip-link">Lompat ke konten</a>
+
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
+  <!-- MAIN PAGE WRAPPER -->
+  <div class="max-w-[1320px] mx-auto px-5 sm:px-10 lg:px-14 pt-7 pb-16">
+
+    <!-- ==========================================
+         1. TOP NAVIGATION BAR
+    =========================================== -->
+    <header class="flex items-center justify-between py-3 relative z-40">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-purpleAccent focus-visible:ring-offset-4 focus-visible:ring-offset-pageBg rounded-lg">
+        <span class="flex items-center">
+          <span class="w-[15px] h-[26px] bg-darkInk rounded-l-[3px] block"></span>
+          <span class="w-[11px] h-[26px] bg-limeNeon border-[2px] border-l-0 border-darkInk rounded-r-[3px] block"></span>
+        </span>
+        <span class="font-bold text-[18px] sm:text-[19px] tracking-tight text-darkInk group-hover:opacity-80 transition-opacity">
+          Teknisi MikroTik
+        </span>
+      </a>
+
+      <!-- Center Navigation -->
+      <nav class="hidden lg:flex items-center gap-7 xl:gap-10 text-[14.5px] font-medium" aria-label="Navigasi utama">
+        <a href="#top" class="flex items-center gap-2 text-[#7A5AF8] hover:opacity-80 transition">
+          <span class="w-[5px] h-[5px] rounded-full bg-[#7A5AF8]"></span>
+          <span>Beranda</span>
+        </a>
+        <a href="#layanan" class="flex items-center gap-2 text-darkInk hover:text-[#7A5AF8] transition">
+          <span class="w-[4px] h-[4px] rounded-full bg-darkInk"></span>
+          <span>Layanan</span>
+        </a>
+        <a href="#tutorial" class="flex items-center gap-2 text-darkInk hover:text-[#7A5AF8] transition">
+          <span class="w-[4px] h-[4px] rounded-full bg-darkInk"></span>
+          <span>Tutorial</span>
+        </a>
+        <a href="#alat" class="flex items-center gap-2 text-darkInk hover:text-[#7A5AF8] transition">
+          <span class="w-[4px] h-[4px] rounded-full bg-darkInk"></span>
+          <span>Alat</span>
+        </a>
+        <a href="#kontak" class="flex items-center gap-2 text-darkInk hover:text-[#7A5AF8] transition">
+          <span class="w-[4px] h-[4px] rounded-full bg-darkInk"></span>
+          <span>Kontak</span>
+        </a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <a href="https://teknisimikrotik.com/tools/" aria-label="Semua alat teknis" class="p-2 text-darkInk hover:text-[#7A5AF8] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-purpleAccent rounded-full">
+          <svg class="w-[19px] h-[19px]" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+            <rect x="3.5" y="3.5" width="7" height="7" rx="2"></rect>
+            <rect x="13.5" y="3.5" width="7" height="7" rx="2"></rect>
+            <rect x="3.5" y="13.5" width="7" height="7" rx="2"></rect>
+            <rect x="13.5" y="13.5" width="7" height="7" rx="2"></rect>
+          </svg>
+        </a>
+
+        <a href="https://wa.me/628113028988?text=%5Bteknisimikrotik.com%2F%5D%0A%0AHalo%20Agil%2C%20saya%20butuh%20bantuan%20setting%2Fperbaikan%20MikroTik.%20Perangkat%3A%20...%20%2C%20ISP%3A%20...%20%2C%20keluhan%3A%20..." target="_blank" rel="noopener"
+           class="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-full border border-darkInk text-[13.5px] font-semibold text-darkInk hover:bg-darkInk hover:text-white transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-purpleAccent">
+          <span class="w-1.5 h-1.5 rounded-full bg-limeNeon"></span>
+          Chat WhatsApp
+        </a>
+
+        <button id="menuBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="mobileMenu"
+                class="lg:hidden p-2 rounded-full border border-darkInk/15 text-darkInk hover:bg-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-purpleAccent">
+          <svg id="menuIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.1" viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden lg:hidden relative z-40 pb-2">
+      <div class="rounded-[26px] bg-white border border-darkInk/5 shadow-[0_16px_50px_rgba(0,0,0,0.08)] p-2.5 space-y-1">
+        <a href="#top" class="block px-4 py-3 rounded-2xl text-sm font-semibold text-[#7A5AF8] bg-purpleSoft/60">Beranda</a>
+        <a href="#layanan" class="block px-4 py-3 rounded-2xl text-sm font-semibold text-darkInk hover:bg-pageBg transition">Layanan</a>
+        <a href="#alat" class="block px-4 py-3 rounded-2xl text-sm font-semibold text-darkInk hover:bg-pageBg transition">Alat teknis</a>
+        <a href="#tutorial" class="block px-4 py-3 rounded-2xl text-sm font-semibold text-darkInk hover:bg-pageBg transition">Tutorial</a>
+        <a href="#kontak" class="block px-4 py-3 rounded-2xl text-sm font-semibold text-darkInk hover:bg-pageBg transition">Kontak</a>
+        <a href="https://wa.me/628113028988?text=%5Bteknisimikrotik.com%2F%5D%0A%0AHalo%20Agil%2C%20saya%20butuh%20bantuan%20setting%2Fperbaikan%20MikroTik.%20Perangkat%3A%20...%20%2C%20ISP%3A%20...%20%2C%20keluhan%3A%20..." target="_blank" rel="noopener"
+           class="block text-center mt-1 px-4 py-3 rounded-full bg-limeNeon border-[1.5px] border-darkInk text-sm font-bold text-darkInk">
+          Chat WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         2. HERO
+    =========================================== -->
+    <main id="main">
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-4 items-center pt-10 lg:pt-14 pb-12 lg:pb-16">
+
+        <!-- Left: copy -->
+        <div class="lg:col-span-7 flex flex-col items-start">
+          <div class="inline-flex items-center gap-2.5 rounded-full border border-darkInk/10 bg-white px-3.5 py-1.5 shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-limeNeon ring-2 ring-limeNeon/40"></span>
+            <span class="font-mono text-[10px] uppercase tracking-[0.14em] font-bold text-darkInk">Jasa setting MikroTik · remote</span>
+          </div>
+
+          <h1 class="mt-6 text-[38px] sm:text-[52px] xl:text-[60px] font-semibold text-darkInk tracking-[-0.03em] leading-[1.12]">
+            MikroTik bermasalah,<br class="hidden sm:block" />
+            atau <span class="relative inline-block">
+              <span aria-hidden="true" class="absolute inset-x-[-6px] bottom-[6px] top-[38%] -rotate-[1.2deg] rounded-[8px] bg-limeNeon"></span>
+              <span class="relative">baru mau ditata?</span>
+            </span>
+          </h1>
+
+          <p class="mt-6 text-[13.5px] sm:text-[14.5px] text-[#3F3F46] font-medium leading-[1.8] max-w-[540px]">
+            Setting load balance, hotspot, PPPoE, sampai perbaikan jaringan yang putus-putus —
+            dikerjakan remote oleh teknisi yang sama. Setiap paket menuliskan lingkup kerja,
+            yang tidak termasuk, estimasi waktu, dan cara hasilnya dibuktikan.
+          </p>
+
+          <!-- CTAs -->
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="https://wa.me/628113028988?text=%5Bteknisimikrotik.com%2F%5D%0A%0AHalo%20Agil%2C%20saya%20butuh%20bantuan%20setting%2Fperbaikan%20MikroTik.%20Perangkat%3A%20...%20%2C%20ISP%3A%20...%20%2C%20keluhan%3A%20..." target="_blank" rel="noopener"
+               class="group inline-flex items-center gap-4 px-6 sm:px-7 py-3.5 rounded-full bg-limeNeon hover:bg-limeHover border-[1.5px] border-darkInk text-[14px] font-bold text-darkInk shadow-sm transition-all duration-200 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-purpleAccent">
+              <span>Chat WhatsApp</span>
+              <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8" />
+              </svg>
+            </a>
+
+            <a href="#layanan"
+               class="group inline-flex items-center gap-4 px-6 sm:px-7 py-3.5 rounded-full bg-darkInk hover:bg-[#27272A] text-white text-[13.5px] font-semibold transition-all duration-200 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-purpleAccent">
+              <span>Lihat 5 paket layanan</span>
+              <svg class="w-4 h-4 text-white/90 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12l7 7 7-7" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="mt-5 flex items-center gap-3">
+            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-purpleSoft text-[10px] font-extrabold tracking-tight text-[#5B35D5] ring-1 ring-purpleAccent/25">AB</span>
+            <p class="text-[12.5px] text-mutedText font-medium">
+              Dikerjakan oleh <span class="text-darkInk font-semibold">Agil Bayu Sagita</span> · paket mulai <span class="font-mono font-bold text-darkInk">Rp 175.000</span>
+            </p>
+          </div>
+
+          <!-- Trust strip -->
+          <div class="mt-10 pt-6 border-t border-darkInk/10 w-full grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-3">
+            <div class="flex items-center gap-2 text-[12px] font-semibold text-[#3F3F46]">
+              <svg class="w-3.5 h-3.5 text-[#7A5AF8]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Remote, tanpa on-site
+            </div>
+            <div class="flex items-center gap-2 text-[12px] font-semibold text-[#3F3F46]">
+              <svg class="w-3.5 h-3.5 text-[#7A5AF8]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              RouterOS 6 &amp; 7
+            </div>
+            <div class="flex items-center gap-2 text-[12px] font-semibold text-[#3F3F46]">
+              <svg class="w-3.5 h-3.5 text-[#7A5AF8]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Lingkup kerja tertulis
+            </div>
+            <div class="flex items-center gap-2 text-[12px] font-semibold text-[#3F3F46]">
+              <svg class="w-3.5 h-3.5 text-[#7A5AF8]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Bukti hasil per sesi
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: floating router card -->
+        <div class="lg:col-span-5 relative flex flex-col items-center lg:items-end">
+          <div class="relative w-full max-w-[500px] pt-4 pb-2">
+            <!-- Decorative blocks -->
+            <div aria-hidden="true" class="absolute right-0 top-0 w-[86px] h-[64px] rounded-[16px] bg-limeNeon"></div>
+            <div aria-hidden="true" class="absolute right-[-14px] bottom-[86px] w-[54px] h-[54px] rounded-[12px] bg-purpleAccent/70"></div>
+
+            <!-- Pixel scatter -->
+            <div aria-hidden="true" class="absolute -left-2 top-16 w-3.5 h-3.5 rotate-12 bg-purpleAccent pixel-blink"></div>
+            <div aria-hidden="true" class="absolute left-6 bottom-10 w-2.5 h-2.5 -rotate-12 bg-limeNeon border border-darkInk/20"></div>
+            <div aria-hidden="true" class="absolute right-6 bottom-0 w-5 h-5 rotate-45 bg-limeNeon border border-darkInk/10 pixel-blink-delayed"></div>
+
+            <!-- Card -->
+            <div class="card-float relative z-10 mx-auto lg:mx-0 w-full max-w-[470px] -rotate-[2deg] rounded-[30px] bg-[#0C0C0E] p-[1.5px] shadow-[0_36px_80px_-24px_rgba(17,17,19,0.55)]">
+              <div class="rounded-[29px] bg-gradient-to-br from-[#3E3E45] via-[#1B1B1F] to-[#0A0A0C] p-5 sm:p-7">
+
+                <!-- Card header -->
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-limeNeon"></span>
+                    <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-white/60">core · sesi read-only</span>
+                  </div>
+                  <span class="font-mono text-[9.5px] uppercase tracking-[0.08em] text-limeNeon border border-limeNeon/30 rounded-full px-2.5 py-1">RouterOS 7</span>
+                </div>
+
+                <!-- Terminal -->
+                <div class="mt-5 rounded-[18px] bg-black/45 ring-1 ring-white/10 p-3.5 sm:p-4 font-mono text-[9.5px] min-[360px]:text-[10px] sm:text-[11.5px] leading-[1.9] overflow-hidden">
+                  <div class="whitespace-nowrap"><span class="text-limeNeon">[admin@core] &gt;</span> <span class="text-white/90">/system resource print</span></div>
+                  <div class="text-white/40 whitespace-nowrap">      uptime: <span class="text-white/85">38w2d18h</span></div>
+                  <div class="text-white/40 whitespace-nowrap">     version: <span class="text-white/85">7.20.1 (stable)</span></div>
+                  <div class="text-white/40 whitespace-nowrap">    cpu-load: <span class="text-limeNeon">11%</span></div>
+
+                  <div class="mt-3 whitespace-nowrap"><span class="text-limeNeon">[admin@core] &gt;</span> <span class="text-white/90">/ip route print</span></div>
+                  <div class="mt-1 whitespace-nowrap"><span class="text-white/55">0 A S</span> <span class="text-white/85">0.0.0.0/0</span> <span class="text-white/30">&rarr;</span> <span class="text-white/85">10.145.145.1</span></div>
+                  <div class="whitespace-nowrap"><span class="text-white/55">1 A S</span> <span class="text-white/85">0.0.0.0/0</span> <span class="text-white/30">&rarr;</span> <span class="text-white/85">10.150.50.1</span></div>
+                </div>
+
+                <!-- Card footer stats -->
+                <div class="mt-5 grid grid-cols-3 divide-x divide-white/10">
+                  <div class="pr-3">
+                    <p class="font-mono text-[17px] font-bold text-white leading-none">34</p>
+                    <p class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.1em] text-white/40">interface</p>
+                  </div>
+                  <div class="px-3">
+                    <p class="font-mono text-[17px] font-bold text-white leading-none">105</p>
+                    <p class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.1em] text-white/40">route</p>
+                  </div>
+                  <div class="pl-3">
+                    <p class="font-mono text-[17px] font-bold text-white leading-none">45</p>
+                    <p class="mt-1.5 font-mono text-[9px] uppercase tracking-[0.1em] text-white/40">rule mangle</p>
+                  </div>
+                </div>
+
+                <!-- card chip ornament -->
+                <div aria-hidden="true" class="absolute right-8 bottom-8 opacity-40 hidden sm:block">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D6FF38" stroke-width="1.1">
+                    <rect x="1" y="1" width="22" height="22" rx="3" />
+                    <path d="M1 7h6V1M17 1v6h6M23 17h-6v6M7 23v-6H1" />
+                    <rect x="8" y="8" width="8" height="8" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pixel checker dissolve under card -->
+            <div aria-hidden="true" class="absolute -bottom-3 left-8 z-0 grid grid-cols-6 gap-[3px] opacity-90">
+              <span class="w-2.5 h-2.5 bg-limeNeon"></span><span class="w-2.5 h-2.5 bg-purpleAccent"></span><span class="w-2.5 h-2.5 bg-darkInk/20"></span><span class="w-2.5 h-2.5 bg-darkInk"></span><span class="w-2.5 h-2.5 bg-purpleAccent"></span><span class="w-2.5 h-2.5 bg-darkInk/15"></span>
+              <span class="w-2.5 h-2.5 bg-darkInk/15"></span><span class="w-2.5 h-2.5 bg-limeNeon"></span><span class="w-2.5 h-2.5 bg-darkInk"></span><span class="w-2.5 h-2.5 bg-purpleAccent"></span><span class="w-2.5 h-2.5 bg-darkInk/10"></span><span class="w-2.5 h-2.5 bg-limeNeon"></span>
+            </div>
+          </div>
+
+          <p class="mt-7 lg:mt-6 text-center lg:text-right font-mono text-[10.5px] leading-relaxed text-mutedText max-w-[340px]">
+            Output perangkat sungguhan, 4 November 2026 11:03 WIB.<br />
+            Potongan <span class="text-darkInk font-bold">/ip route print</span> — dua jalur default aktif.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           3. PAKET LAYANAN
+      =========================================== -->
+      <section id="layanan" class="bg-white rounded-[32px] sm:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-[0_12px_50px_rgba(0,0,0,0.03)] scroll-mt-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pb-10 lg:pb-12">
+
+          <div class="lg:col-span-6 reveal">
+            <p class="font-mono text-[10px] uppercase tracking-[0.16em] font-bold text-[#7A5AF8]">Paket layanan</p>
+            <h2 class="mt-3 text-[30px] sm:text-[40px] xl:text-[44px] font-semibold text-darkInk tracking-[-0.025em] leading-[1.15]">
+              Lingkup kerjanya<br class="hidden sm:block" />
+              ditulis di depan.
+            </h2>
+          </div>
+
+          <div class="lg:col-span-6 flex flex-col items-start lg:pl-4 pt-1 reveal">
+            <p class="text-[13.5px] sm:text-[14.5px] text-[#71717A] font-medium leading-[1.8] max-w-[510px]">
+              Harga mulai dari, bukan harga mati. Yang menaikkan angka: jumlah perangkat
+              dan jumlah link. Setiap paket memuat apa yang dikerjakan, apa yang tidak
+              termasuk, estimasi waktu, dan bukti hasilnya.
+            </p>
+
+            <div class="mt-7">
+              <a href="https://teknisimikrotik.com/layanan/"
+                 class="group inline-flex items-center gap-4 px-7 py-3.5 rounded-full bg-darkInk hover:bg-[#27272A] text-white text-[13.5px] font-semibold transition-all duration-200 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-purpleAccent">
+                <span>Semua paket</span>
+                <svg class="w-4 h-4 text-white/90 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5">
+
+          <!-- 1. Featured: Load balance -->
+          <a href="https://teknisimikrotik.com/layanan/load-balance-failover/"
+             class="feature-box reveal group sm:col-span-2 lg:col-span-3 bg-darkInk rounded-[28px] p-6 sm:p-7 flex flex-col justify-between min-h-[270px] shadow-[0_18px_45px_-20px_rgba(17,17,19,0.5)] hover:shadow-[0_26px_60px_-22px_rgba(17,17,19,0.6)]">
+            <div>
+              <div class="flex items-start justify-between gap-4">
+                <span class="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-white/10 text-limeNeon">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h4a4 4 0 0 1 4 4v4a4 4 0 0 0 4 4h6" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 18h4a4 4 0 0 0 4-4v-4a4 4 0 0 1 4-4h6" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 3l3 3-3 3M18 15l3 3-3 3" />
+                  </svg>
+                </span>
+                <span class="rounded-full bg-limeNeon text-darkInk font-mono text-[10px] font-bold uppercase tracking-[0.06em] px-3 py-1.5">
+                  Mulai Rp 350.000
+                </span>
+              </div>
+
+              <h3 class="mt-5 text-[18px] sm:text-[19px] font-semibold text-white leading-snug max-w-[330px]">
+                Load balance &amp; failover MikroTik (2 ISP atau lebih)
+              </h3>
+              <p class="mt-2.5 text-[13px] text-white/55 font-medium leading-[1.7] max-w-[330px]">
+                Dua ISP dipakai bersamaan, dan internet tidak mati saat salah satu putus.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-white/40">Paling sering diminta</span>
+              <span class="arrow-link inline-flex items-center gap-2 text-[12.5px] font-semibold text-limeNeon">
+                Lihat paket
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- 2. Hotspot -->
+          <a href="https://teknisimikrotik.com/layanan/hotspot-voucher/"
+             class="feature-box reveal group sm:col-span-2 lg:col-span-3 bg-cardGray rounded-[28px] p-6 sm:p-7 flex flex-col justify-between min-h-[270px] hover:shadow-[0_20px_45px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-start justify-between gap-4">
+                <span class="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-white text-[#7A5AF8] ring-1 ring-darkInk/5">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.5 9a15 15 0 0 1 19 0M5.5 12.5a10.5 10.5 0 0 1 13 0M8.5 16a6 6 0 0 1 7 0" />
+                    <circle cx="12" cy="19.5" r="1.4" fill="currentColor" stroke="none" />
+                  </svg>
+                </span>
+                <span class="rounded-full bg-white text-darkInk font-mono text-[10px] font-bold uppercase tracking-[0.06em] px-3 py-1.5 border border-darkInk/10">
+                  Mulai Rp 450.000
+                </span>
+              </div>
+
+              <h3 class="mt-5 text-[18px] sm:text-[19px] font-semibold text-darkInk leading-snug max-w-[330px]">
+                Hotspot &amp; voucher MikroTik: profil, masa aktif, cetak voucher
+              </h3>
+              <p class="mt-2.5 text-[13px] text-mutedText font-medium leading-[1.7] max-w-[330px]">
+                Wifi jadi punya pintu: kode voucher, batas waktu, dan kuota yang benar-benar jalan.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-darkInk/10 flex items-center justify-between">
+              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-mutedText/70">Wifi publik</span>
+              <span class="arrow-link inline-flex items-center gap-2 text-[12.5px] font-semibold text-darkInk">
+                Lihat paket
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- 3. Setting dasar -->
+          <a href="https://teknisimikrotik.com/layanan/setting-dasar/"
+             class="feature-box reveal group lg:col-span-2 bg-cardGray rounded-[28px] p-6 flex flex-col justify-between min-h-[240px] hover:shadow-[0_20px_45px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-start justify-between gap-3">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white text-[#7A5AF8] ring-1 ring-darkInk/5">
+                  <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+                    <circle cx="9" cy="7" r="2.2" fill="#fff" /><circle cx="15" cy="12" r="2.2" fill="#fff" /><circle cx="8" cy="17" r="2.2" fill="#fff" />
+                  </svg>
+                </span>
+                <span class="font-mono text-[10px] font-bold text-darkInk/70 whitespace-nowrap">Rp 175.000</span>
+              </div>
+              <h3 class="mt-4 text-[15.5px] font-semibold text-darkInk leading-[1.45]">
+                Setting dasar MikroTik: perangkat baru sampai siap pakai
+              </h3>
+              <p class="mt-2 text-[12.5px] text-mutedText font-medium leading-[1.65]">
+                Dari perangkat keluar dus jadi router yang rapi, terdokumentasi, dan aman.
+              </p>
+            </div>
+            <div class="mt-4 pt-3.5 border-t border-darkInk/10">
+              <span class="arrow-link inline-flex items-center gap-2 text-[12px] font-semibold text-darkInk">
+                Lihat paket
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- 4. PPPoE -->
+          <a href="https://teknisimikrotik.com/layanan/pppoe-bandwidth/"
+             class="feature-box reveal group lg:col-span-2 bg-cardGray rounded-[28px] p-6 flex flex-col justify-between min-h-[240px] hover:shadow-[0_20px_45px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-start justify-between gap-3">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white text-[#7A5AF8] ring-1 ring-darkInk/5">
+                  <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <circle cx="12" cy="5" r="2.5" />
+                    <circle cx="5" cy="19" r="2.5" />
+                    <circle cx="19" cy="19" r="2.5" />
+                    <path stroke-linecap="round" d="M12 7.5v4M12 11.5L5.8 16.7M12 11.5l6.2 5.2" />
+                  </svg>
+                </span>
+                <span class="font-mono text-[10px] font-bold text-darkInk/70 whitespace-nowrap">Rp 450.000</span>
+              </div>
+              <h3 class="mt-4 text-[15.5px] font-semibold text-darkInk leading-[1.45]">
+                PPPoE server &amp; bandwidth management MikroTik
+              </h3>
+              <p class="mt-2 text-[12.5px] text-mutedText font-medium leading-[1.65]">
+                Pelanggan punya akun sendiri, kecepatan sesuai paket, dan yang boros kelihatan.
+              </p>
+            </div>
+            <div class="mt-4 pt-3.5 border-t border-darkInk/10">
+              <span class="arrow-link inline-flex items-center gap-2 text-[12px] font-semibold text-darkInk">
+                Lihat paket
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- 5. Perbaikan -->
+          <a href="https://teknisimikrotik.com/layanan/perbaikan-jaringan/"
+             class="feature-box reveal group sm:col-span-2 lg:col-span-2 bg-cardGray rounded-[28px] p-6 flex flex-col justify-between min-h-[240px] hover:shadow-[0_20px_45px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-start justify-between gap-3">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white text-[#7A5AF8] ring-1 ring-darkInk/5">
+                  <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h3.5l2-5 3 10 2.5-7 1.5 4H21" />
+                  </svg>
+                </span>
+                <span class="font-mono text-[10px] font-bold text-darkInk/70 whitespace-nowrap">Rp 200.000</span>
+              </div>
+              <h3 class="mt-4 text-[15.5px] font-semibold text-darkInk leading-[1.45]">
+                Diagnosa &amp; perbaikan jaringan MikroTik yang bermasalah
+              </h3>
+              <p class="mt-2 text-[12.5px] text-mutedText font-medium leading-[1.65]">
+                Masalahnya dicari sampai ketemu, bukan diganti setting secara acak.
+              </p>
+            </div>
+            <div class="mt-4 pt-3.5 border-t border-darkInk/10">
+              <span class="arrow-link inline-flex items-center gap-2 text-[12px] font-semibold text-darkInk">
+                Lihat paket
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           4. ALAT TEKNIS
+      =========================================== -->
+      <section id="alat" class="mt-6 sm:mt-8 bg-white rounded-[32px] sm:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-[0_12px_50px_rgba(0,0,0,0.03)] scroll-mt-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pb-10">
+
+          <div class="lg:col-span-6 reveal">
+            <p class="font-mono text-[10px] uppercase tracking-[0.16em] font-bold text-[#7A5AF8]">Alat teknis</p>
+            <h2 class="mt-3 text-[30px] sm:text-[40px] xl:text-[44px] font-semibold text-darkInk tracking-[-0.025em] leading-[1.15]">
+              Hitung dulu,<br class="hidden sm:block" />
+              baru ubah router.
+            </h2>
+          </div>
+
+          <div class="lg:col-span-6 flex flex-col items-start lg:pl-4 pt-1 reveal">
+            <p class="text-[13.5px] sm:text-[14.5px] text-[#71717A] font-medium leading-[1.8] max-w-[510px]">
+              Semua perhitungan berjalan di browser. Tanpa akun, tanpa unggah data —
+              teks dan file yang kamu proses tidak pernah dikirim ke mana-mana.
+            </p>
+
+            <div class="mt-7">
+              <a href="https://teknisimikrotik.com/tools/"
+                 class="group inline-flex items-center gap-4 px-7 py-3.5 rounded-full bg-darkInk hover:bg-[#27272A] text-white text-[13.5px] font-semibold transition-all duration-200 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-purpleAccent">
+                <span>Semua alat (7)</span>
+                <svg class="w-4 h-4 text-white/90 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <!-- Tool 1 -->
+          <a href="https://teknisimikrotik.com/tools/routeros-generator/"
+             class="feature-box reveal group bg-cardGray rounded-[28px] p-6 sm:p-7 flex flex-col justify-between min-h-[250px] hover:shadow-[0_20px_45px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <span class="rounded-full bg-limeNeon text-darkInk font-mono text-[9.5px] font-bold uppercase tracking-[0.08em] px-2.5 py-1">Siap dipakai</span>
+                <span class="font-mono text-[9.5px] uppercase tracking-[0.12em] text-mutedText/70">Jaringan</span>
+              </div>
+
+              <h3 class="mt-5 text-[16.5px] font-semibold text-darkInk leading-snug">Generator Skrip RouterOS</h3>
+              <p class="mt-2 text-[13px] text-mutedText font-medium leading-[1.7]">
+                Susun skrip MikroTik siap tempel dari form yang aman.
+              </p>
+
+              <!-- mini diagram -->
+              <svg class="mt-5 w-full h-[54px]" viewBox="0 0 200 54" fill="none" aria-hidden="true">
+                <rect x="1" y="1" width="198" height="52" rx="12" stroke="#D4D4D8" stroke-dasharray="3 3" />
+                <text x="16" y="24" font-family="'Space Mono', monospace" font-size="9" fill="#9A6AFF">&lt;/&gt;</text>
+                <rect x="42" y="16" width="62" height="5" rx="2.5" fill="#C9C9CF" />
+                <rect x="42" y="28" width="94" height="5" rx="2.5" fill="#E1E1E5" />
+                <rect x="156" y="16" width="26" height="17" rx="8.5" fill="#D6FF38" stroke="#111113" stroke-width="1" />
+              </svg>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-darkInk/10">
+              <span class="arrow-link inline-flex items-center gap-2 text-[12.5px] font-semibold text-darkInk">
+                Buka alat
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Tool 2 -->
+          <a href="https://teknisimikrotik.com/tools/mikrotik-export-analyzer/"
+             class="feature-box reveal group bg-cardGray rounded-[28px] p-6 sm:p-7 flex flex-col justify-between min-h-[250px] hover:shadow-[0_20px_45px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <span class="rounded-full bg-limeNeon text-darkInk font-mono text-[9.5px] font-bold uppercase tracking-[0.08em] px-2.5 py-1">Siap dipakai</span>
+                <span class="font-mono text-[9.5px] uppercase tracking-[0.12em] text-mutedText/70">Jaringan</span>
+              </div>
+
+              <h3 class="mt-5 text-[16.5px] font-semibold text-darkInk leading-snug">Analisa /export MikroTik</h3>
+              <p class="mt-2 text-[13px] text-mutedText font-medium leading-[1.7]">
+                Audit konfigurasi RouterOS dari teks export, tanpa login router.
+              </p>
+
+              <!-- mini diagram -->
+              <svg class="mt-5 w-full h-[54px]" viewBox="0 0 200 54" fill="none" aria-hidden="true">
+                <rect x="14" y="7" width="52" height="40" rx="10" fill="#FFFFFF" stroke="#D4D4D8" />
+                <rect x="24" y="17" width="32" height="3.5" rx="1.75" fill="#C9C9CF" />
+                <rect x="24" y="25" width="24" height="3.5" rx="1.75" fill="#E1E1E5" />
+                <rect x="24" y="33" width="28" height="3.5" rx="1.75" fill="#E1E1E5" />
+                <circle cx="78" cy="27" r="13" fill="#EBE4FF" stroke="#9A6AFF" stroke-width="1.2" />
+                <path d="M88 37l10 9" stroke="#9A6AFF" stroke-width="2" stroke-linecap="round" />
+                <rect x="118" y="18" width="64" height="5" rx="2.5" fill="#C9C9CF" />
+                <rect x="118" y="30" width="46" height="5" rx="2.5" fill="#E1E1E5" />
+              </svg>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-darkInk/10">
+              <span class="arrow-link inline-flex items-center gap-2 text-[12.5px] font-semibold text-darkInk">
+                Buka alat
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Tool 3 -->
+          <a href="https://teknisimikrotik.com/tools/gpon-link-budget/"
+             class="feature-box reveal group bg-cardGray rounded-[28px] p-6 sm:p-7 flex flex-col justify-between min-h-[250px] sm:col-span-2 lg:col-span-1 hover:shadow-[0_20px_45px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-center justify-between gap-3">
+                <span class="rounded-full bg-limeNeon text-darkInk font-mono text-[9.5px] font-bold uppercase tracking-[0.08em] px-2.5 py-1">Siap dipakai</span>
+                <span class="font-mono text-[9.5px] uppercase tracking-[0.12em] text-mutedText/70">Jaringan</span>
+              </div>
+
+              <h3 class="mt-5 text-[16.5px] font-semibold text-darkInk leading-snug">Kalkulator Link Budget GPON</h3>
+              <p class="mt-2 text-[13px] text-mutedText font-medium leading-[1.7]">
+                Hitung redaman OLT–ONT dan pastikan masih di ambang aman.
+              </p>
+
+              <!-- mini diagram -->
+              <svg class="mt-5 w-full h-[54px]" viewBox="0 0 200 54" fill="none" aria-hidden="true">
+                <circle cx="100" cy="27" r="24" fill="#F6F5FA" stroke="#9A6AFF" stroke-width="1.1" />
+                <circle cx="100" cy="27" r="15" fill="#EFEBF9" stroke="#E4E0F2" />
+                <circle cx="100" cy="27" r="7" fill="#A67CFF" />
+                <circle cx="100" cy="27" r="2" fill="#111113" />
+                <line x1="10" y1="27" x2="72" y2="27" stroke="#D4D4D8" stroke-dasharray="3 3" />
+                <line x1="128" y1="27" x2="190" y2="27" stroke="#D4D4D8" stroke-dasharray="3 3" />
+                <rect x="48" y="22" width="10" height="10" fill="#D6FF38" stroke="#111113" stroke-width="1" />
+              </svg>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-darkInk/10">
+              <span class="arrow-link inline-flex items-center gap-2 text-[12.5px] font-semibold text-darkInk">
+                Buka alat
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           5. TULISAN TERBARU
+      =========================================== -->
+      <section id="tutorial" class="pt-14 sm:pt-16 scroll-mt-6">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 pb-7 reveal">
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-[0.16em] font-bold text-[#7A5AF8]">Tulisan terbaru</p>
+            <h2 class="mt-3 text-[28px] sm:text-[36px] font-semibold text-darkInk tracking-[-0.025em] leading-[1.18]">
+              Masalah yang paling sering masuk.
+            </h2>
+          </div>
+
+          <a href="https://teknisimikrotik.com/tutorial/"
+             class="group inline-flex items-center gap-3 self-start sm:self-auto px-5 py-2.5 rounded-full border border-darkInk/15 bg-white hover:bg-darkInk hover:text-white text-[12.5px] font-semibold text-darkInk transition-colors duration-200">
+            <span>Semua tutorial</span>
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Article 1 -->
+          <a href="https://teknisimikrotik.com/tutorial/backup-restore-konfigurasi-mikrotik/"
+             class="feature-box reveal group bg-white rounded-[26px] p-6 sm:p-7 flex flex-col justify-between min-h-[260px] shadow-[0_10px_35px_rgba(0,0,0,0.025)] hover:shadow-[0_22px_50px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-center gap-2 font-mono text-[10px] text-mutedText/80">
+                <span>2026-11-03</span>
+                <span class="w-1 h-1 rounded-full bg-mutedText/40"></span>
+                <span>10 menit</span>
+              </div>
+              <h3 class="mt-4 text-[16.5px] font-semibold text-darkInk leading-[1.45]">
+                Backup dan restore konfigurasi MikroTik: .backup vs .rsc dan jebakan beda versi
+              </h3>
+              <p class="mt-2.5 text-[12.5px] text-mutedText font-medium leading-[1.7]">
+                Kenapa satu file backup bisa gagal dipulihkan di router lain, perintah export mana
+                yang menyertakan PPP secret, dan urutan aman sebelum upgrade RouterOS.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-darkInk/10">
+              <span class="arrow-link inline-flex items-center gap-2 text-[12px] font-semibold text-[#7A5AF8]">
+                Baca tutorial
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Article 2 -->
+          <a href="https://teknisimikrotik.com/tutorial/mikrotik-tidak-bisa-ping-gateway/"
+             class="feature-box reveal group bg-white rounded-[26px] p-6 sm:p-7 flex flex-col justify-between min-h-[260px] shadow-[0_10px_35px_rgba(0,0,0,0.025)] hover:shadow-[0_22px_50px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-center gap-2 font-mono text-[10px] text-mutedText/80">
+                <span>2026-11-03</span>
+                <span class="w-1 h-1 rounded-full bg-mutedText/40"></span>
+                <span>9 menit</span>
+              </div>
+              <h3 class="mt-4 text-[16.5px] font-semibold text-darkInk leading-[1.45]">
+                MikroTik tidak bisa ping gateway: urutan pemeriksaan yang benar
+              </h3>
+              <p class="mt-2.5 text-[12.5px] text-mutedText font-medium leading-[1.7]">
+                Kenapa "tidak bisa ping gateway" bisa berarti empat hal berbeda, dan bagaimana
+                membedakannya lewat ARP, subnet mask, serta rantai input firewall.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-darkInk/10">
+              <span class="arrow-link inline-flex items-center gap-2 text-[12px] font-semibold text-[#7A5AF8]">
+                Baca tutorial
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Article 3 -->
+          <a href="https://teknisimikrotik.com/tutorial/pppoe-client-disconnect-terus/"
+             class="feature-box reveal group bg-white rounded-[26px] p-6 sm:p-7 flex flex-col justify-between min-h-[260px] shadow-[0_10px_35px_rgba(0,0,0,0.025)] hover:shadow-[0_22px_50px_-25px_rgba(17,17,19,0.25)]">
+            <div>
+              <div class="flex items-center gap-2 font-mono text-[10px] text-mutedText/80">
+                <span>2026-11-03</span>
+                <span class="w-1 h-1 rounded-full bg-mutedText/40"></span>
+                <span>10 menit</span>
+              </div>
+              <h3 class="mt-4 text-[16.5px] font-semibold text-darkInk leading-[1.45]">
+                PPPoE client MikroTik disconnect terus: cara memisahkan masalah ISP dan router
+              </h3>
+              <p class="mt-2.5 text-[12.5px] text-mutedText font-medium leading-[1.7]">
+                Cara membaca log PPPoE, mengenali pola putus (periodik vs acak), dan bukti apa
+                yang perlu dikirim ke ISP supaya keluhanmu tidak dijawab "dari pusat normal".
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-darkInk/10">
+              <span class="arrow-link inline-flex items-center gap-2 text-[12px] font-semibold text-[#7A5AF8]">
+                Baca tutorial
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           6. CLOSING CTA
+      =========================================== -->
+      <section id="kontak" class="mt-14 sm:mt-16 scroll-mt-6">
+        <div class="relative overflow-hidden rounded-[32px] sm:rounded-[44px] bg-darkInk px-6 py-10 sm:px-10 sm:py-14 lg:px-16">
+          <!-- decorations -->
+          <div aria-hidden="true" class="absolute -right-16 -bottom-20 w-[340px] h-[340px] pixel-checker opacity-15 sm:opacity-25 rotate-12"></div>
+          <div aria-hidden="true" class="absolute right-10 top-8 w-4 h-4 bg-limeNeon pixel-blink"></div>
+          <div aria-hidden="true" class="absolute right-24 top-20 w-3 h-3 bg-purpleAccent rotate-12 pixel-blink-delayed"></div>
+
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8">
+              <p class="font-mono text-[10px] uppercase tracking-[0.18em] font-bold text-limeNeon">Langkah berikutnya</p>
+              <h2 class="mt-3 text-[30px] sm:text-[42px] lg:text-[46px] font-semibold text-white tracking-[-0.03em] leading-[1.15]">
+                Kirim kondisi jaringanmu.
+              </h2>
+              <p class="mt-4 text-[13.5px] sm:text-[14.5px] text-white/55 font-medium leading-[1.8] max-w-[560px]">
+                Saya balas dengan lingkup kerja dan estimasi biayanya. Balasan di jam kerja
+                08.00–21.00 WIB, biasanya di bawah 2 jam.
+              </p>
+
+              <div class="mt-7 flex flex-wrap items-center gap-4">
+                <a href="https://wa.me/628113028988?text=%5Bteknisimikrotik.com%2F%5D%0A%0AHalo%20Agil%2C%20saya%20butuh%20bantuan%20setting%2Fperbaikan%20MikroTik.%20Perangkat%3A%20...%20%2C%20ISP%3A%20...%20%2C%20keluhan%3A%20..." target="_blank" rel="noopener"
+                   class="group inline-flex items-center gap-4 px-7 py-3.5 rounded-full bg-limeNeon hover:bg-limeHover text-[14px] font-bold text-darkInk transition-all duration-200 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-limeNeon focus-visible:ring-offset-2 focus-visible:ring-offset-darkInk">
+                  <span>Chat WhatsApp</span>
+                  <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </a>
+                <span class="font-mono text-[10.5px] text-white/40 leading-relaxed">Pesan sudah terisi otomatis —<br class="hidden sm:block" /> tinggal tambahkan detail perangkatmu.</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-4 lg:justify-self-end w-full max-w-[300px]">
+              <div class="relative z-10 rounded-[24px] border border-white/10 bg-[#17171B] p-5 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.8)]">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-limeNeon"></span>
+                  <span class="font-mono text-[9.5px] uppercase tracking-[0.14em] text-white/45">Kontak langsung</span>
+                </div>
+                <p class="mt-3 text-[15px] font-semibold text-white">Agil Bayu Sagita</p>
+                <p class="mt-1 text-[11.5px] text-white/40 leading-relaxed">Founder · Banyuwangi<br />PT Semesta Multitekno Indonesia</p>
+                <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span class="font-mono text-[10px] text-white/40">08.00–21.00 WIB</span>
+                  <span class="font-mono text-[10px] text-limeNeon">&lt; 2 jam</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==========================================
+         7. FOOTER
+    =========================================== -->
+    <footer class="pt-14 sm:pt-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-10">
+        <div class="lg:col-span-6">
+          <a href="#top" class="inline-flex items-center gap-3 group">
+            <span class="flex items-center">
+              <span class="w-[15px] h-[26px] bg-darkInk rounded-l-[3px] block"></span>
+              <span class="w-[11px] h-[26px] bg-limeNeon border-[2px] border-l-0 border-darkInk rounded-r-[3px] block"></span>
+            </span>
+            <span class="font-bold text-[18px] tracking-tight text-darkInk">Teknisi MikroTik</span>
+          </a>
+          <p class="mt-4 text-[12.5px] text-mutedText font-medium leading-[1.8] max-w-[420px]">
+            Alat di Teknisi MikroTik berjalan di browser Anda. Kami tidak mengunggah, menyimpan,
+            atau membaca isi file dan teks yang Anda proses. Situs ini tidak memasang cookie iklan
+            maupun analitik pihak ketiga.
+          </p>
+          <p class="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-mutedText/60">teknisimikrotik.com · Banyuwangi</p>
+        </div>
+
+        <div class="lg:col-span-3">
+          <p class="font-mono text-[10px] uppercase tracking-[0.16em] font-bold text-darkInk">Jasa</p>
+          <ul class="mt-4 space-y-2.5 text-[13px] font-medium text-mutedText">
+            <li><a href="https://teknisimikrotik.com/layanan/" class="hover:text-darkInk transition">Paket layanan</a></li>
+            <li><a href="https://teknisimikrotik.com/tutorial/" class="hover:text-darkInk transition">Tutorial teknis</a></li>
+            <li><a href="https://teknisimikrotik.com/tools/" class="hover:text-darkInk transition">Semua alat</a></li>
+            <li><a href="https://teknisimikrotik.com/about/" class="hover:text-darkInk transition">Tentang Teknisi MikroTik</a></li>
+            <li><a href="https://teknisimikrotik.com/contact/" class="hover:text-darkInk transition">Kontak</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3">
+          <p class="font-mono text-[10px] uppercase tracking-[0.16em] font-bold text-darkInk">Legal</p>
+          <ul class="mt-4 space-y-2.5 text-[13px] font-medium text-mutedText">
+            <li><a href="https://teknisimikrotik.com/privacy-policy/" class="hover:text-darkInk transition">Kebijakan Privasi</a></li>
+            <li><a href="https://teknisimikrotik.com/terms/" class="hover:text-darkInk transition">Ketentuan Layanan</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-darkInk/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <p class="font-mono text-[10.5px] text-mutedText/70">© 2026 Teknisi MikroTik. Dibuat dan dirawat oleh PT Semesta Multitekno Indonesia.</p>
+        <p class="font-mono text-[10.5px] text-mutedText/70">Dikerjakan oleh Agil Bayu Sagita (founder) · Banyuwangi</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+
+    function setMenu(open) {
+      mobileMenu.classList.toggle('hidden', !open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuIcon.innerHTML = open
+        ? '<path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />'
+        : '<path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />';
+    }
+
+    menuBtn.addEventListener('click', () => {
+      setMenu(mobileMenu.classList.contains('hidden'));
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+
+    // Reveal on scroll
+    const revealItems = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      revealItems.forEach((item, index) => {
+        item.style.transitionDelay = `${Math.min(index * 45, 220)}ms`;
+        observer.observe(item);
+      });
+    } else {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

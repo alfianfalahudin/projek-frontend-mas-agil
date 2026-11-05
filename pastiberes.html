@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PastiBeres — Alat online gratis, diproses di browser</title>
+  <meta name="description" content="Katalog alat online gratis: kompres gambar, format JSON, gabung PDF, generator QR, dan kalkulator subnet IP. Semua diproses di browser, tanpa unggah file." />
+  <link rel="canonical" href="https://pastiberes.web.id/" />
+  <link rel="alternate" hreflang="id-ID" href="https://pastiberes.web.id/" />
+  <link rel="alternate" hreflang="en-US" href="https://pastiberes.web.id/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://pastiberes.web.id/" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PastiBeres" />
+  <meta property="og:title" content="PastiBeres — Alat online gratis, diproses di browser" />
+  <meta property="og:description" content="Katalog alat online gratis: kompres gambar, format JSON, gabung PDF, generator QR, dan kalkulator subnet IP. Semua diproses di browser, tanpa unggah file." />
+  <meta property="og:url" content="https://pastiberes.web.id/" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:image" content="https://pastiberes.web.id/og-default.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="PastiBeres — alat harian yang beres di browser" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PastiBeres — Alat online gratis, diproses di browser" />
+  <meta name="twitter:description" content="Katalog alat online gratis: kompres gambar, format JSON, gabung PDF, generator QR, dan kalkulator subnet IP. Semua diproses di browser, tanpa unggah file." />
+  <meta name="twitter:image" content="https://pastiberes.web.id/og-default.jpg" />
+  <meta name="twitter:image:alt" content="PastiBeres — alat harian yang beres di browser" />
+
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","name":"PastiBeres","url":"https://pastiberes.web.id/","inLanguage":"id-ID","potentialAction":{"@type":"SearchAction","target":"https://pastiberes.web.id/?q={search_term_string}","query-input":"required name=search_term_string"}}
+  </script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"PT Semesta Multitekno Indonesia","url":"https://semesta.co.id/","brand":{"@type":"Brand","name":"PastiBeres"}}
+  </script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
+            serifDisplay: ['"Playfair Display"', 'Georgia', 'serif'],
+            editorial: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #FFFFFF;
+      color: #0D0D0E;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      overflow-x: clip;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: #FF511C; color: #FFFFFF; }
+
+    /* Main hero metallic silver-grey gradient surface */
+    .hero-metallic-surface {
+      background:
+        radial-gradient(60% 75% at 72% 42%, rgba(235, 236, 240, 0.78) 0%, rgba(196, 198, 203, 0.18) 60%, transparent 100%),
+        linear-gradient(180deg, #9C9DA1 0%, #B4B5B9 24%, #CFD0D4 58%, #E6E7EA 84%, #F4F4F6 100%);
+    }
+
+    /* Editorial display typography */
+    .grow-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 0.92;
+      color: #09090A;
+    }
+
+    /* Vibrant red-orange studio card */
+    .orange-studio-card {
+      background:
+        radial-gradient(85% 75% at 25% 22%, #FF7746 0%, #FF511C 52%, #E33B0A 100%);
+      box-shadow:
+        0 28px 60px -15px rgba(25, 20, 18, 0.26),
+        0 8px 24px -6px rgba(227, 59, 10, 0.18);
+    }
+
+    .studio-rim-glow {
+      background: linear-gradient(90deg, rgba(168, 197, 255, 0.55) 0%, rgba(168, 197, 255, 0.18) 12%, transparent 28%);
+    }
+
+    /* Frosted glassmorphism cards */
+    .frosted-stat-card {
+      background: linear-gradient(135deg, rgba(232, 224, 220, 0.48) 0%, rgba(218, 215, 216, 0.36) 100%);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.55),
+        0 18px 40px -12px rgba(0, 0, 0, 0.12);
+    }
+
+    .frosted-product-card {
+      background: linear-gradient(115deg, rgba(220, 210, 208, 0.48) 0%, rgba(238, 238, 240, 0.72) 55%, rgba(244, 244, 246, 0.82) 100%);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.7),
+        0 24px 48px -12px rgba(18, 18, 22, 0.16);
+    }
+
+    /* Floating white question pills */
+    .question-pill {
+      background: #FFFFFF;
+      box-shadow:
+        0 12px 28px -6px rgba(18, 18, 20, 0.16),
+        0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    }
+    .question-pill:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow:
+        0 16px 32px -8px rgba(18, 18, 20, 0.2),
+        0 3px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Filter chips */
+    .chip {
+      border: 1px solid rgba(13, 13, 14, 0.1);
+      background: #FFFFFF;
+      color: #55555A;
+      transition: all 0.2s ease;
+    }
+    .chip:hover {
+      border-color: rgba(255, 81, 28, 0.35);
+      color: #141416;
+      transform: translateY(-1px);
+    }
+    .chip[data-active="true"] {
+      border-color: rgba(255, 81, 28, 0.45);
+      background: rgba(255, 81, 28, 0.09);
+      color: #E33B0A;
+    }
+
+    /* Motion */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+    .rise { animation: rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .rise-delay-1 { animation-delay: 0.12s; }
+    .rise-delay-2 { animation-delay: 0.22s; }
+    .float-a { animation: floatY 7s ease-in-out infinite; }
+    .float-b { animation: floatY 9s ease-in-out infinite; animation-delay: -2.5s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .rise, .float-a, .float-b { animation: none !important; }
+      .question-pill, .chip { transition: none !important; }
+    }
+
+    :focus-visible {
+      outline: 2px solid #FF511C;
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-white text-[#0E0E10] selection:bg-[#FF511C] selection:text-white">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-[#0A0A0C] focus:px-4 focus:py-2 focus:font-semibold focus:text-white">Lompat ke konten</a>
+
+  <!-- OUTER PAGE WRAPPER -->
+  <div class="w-full max-w-[1440px] mx-auto px-2 sm:px-3.5 pt-1 pb-4">
+
+    <!-- ==========================================
+         1. TOP NAVIGATION BAR
+    =========================================== -->
+    <header class="relative z-40 w-full px-4 sm:px-8 lg:px-11 py-4 flex items-center justify-between bg-white/95 backdrop-blur border-b border-black/[0.06]">
+
+      <!-- Left: logo + wordmark -->
+      <a href="/" class="flex items-center gap-2.5 group focus:outline-none" aria-label="PastiBeres — Beranda">
+        <span class="grid size-9 place-items-center rounded-[11px] bg-[#0A0A0C] text-white shadow-sm transition-transform group-hover:-rotate-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]" aria-hidden="true">
+            <path d="m9 12 2 2 4-4" />
+            <rect x="3" y="3" width="18" height="18" rx="4" />
+          </svg>
+        </span>
+        <span class="text-[16px] font-extrabold tracking-[-0.02em] text-[#111113]">PastiBeres</span>
+        <span class="hidden lg:inline-flex rounded-full border border-black/10 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-black/45">pastiberes.web.id</span>
+      </a>
+
+      <!-- Center: navigation links -->
+      <nav class="hidden md:flex items-center gap-5 lg:gap-6 text-[13px] font-semibold text-[#18181B]" aria-label="Navigasi utama">
+        <a href="#alat" class="hover:text-[#FF511C] transition-colors">Alat</a>
+        <span class="text-[#707075] font-bold select-none" aria-hidden="true">.</span>
+        <a href="/artikel/" class="hover:text-[#FF511C] transition-colors">Panduan</a>
+        <span class="text-[#707075] font-bold select-none" aria-hidden="true">.</span>
+        <a href="/about/" class="hover:text-[#FF511C] transition-colors">Tentang</a>
+        <span class="text-[#707075] font-bold select-none" aria-hidden="true">.</span>
+        <a href="/contact/" class="hover:text-[#FF511C] transition-colors">Kontak</a>
+      </nav>
+
+      <!-- Right: language + outlined pill CTA + mobile menu -->
+      <div class="flex items-center gap-3 sm:gap-5">
+        <div class="hidden sm:block h-5 w-[1px] bg-black/15"></div>
+        <a href="/en/" hreflang="en" class="hidden sm:inline-flex text-[12px] font-bold tracking-wide text-[#141416] hover:text-[#FF511C] transition-colors">EN<span class="sr-only"> — English</span></a>
+        <a href="#alat" id="headerCta" class="rounded-full border border-[#141416] px-4 sm:px-5 py-2.5 text-[12px] text-[#111113] hover:bg-[#111113] hover:text-white transition-all">
+          <span class="font-bold">Buka alat</span>
+          <span class="hidden sm:inline font-normal text-[#454549]"> — Gratis</span>
+        </a>
+        <button id="menuToggle" type="button" class="md:hidden grid size-9 place-items-center rounded-full border border-black/10 text-[#141416]" aria-label="Buka menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg id="menuIconOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="size-4" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg id="menuIconClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden size-4" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile navigation panel -->
+    <div id="mobileNav" class="hidden md:hidden border-b border-black/10 bg-white px-5 py-4">
+      <nav class="grid grid-cols-2 gap-1 text-[13px] font-semibold text-[#18181B]" aria-label="Navigasi seluler">
+        <a href="#alat" class="rounded-xl px-3 py-2.5 hover:bg-black/5">Semua alat</a>
+        <a href="/artikel/" class="rounded-xl px-3 py-2.5 hover:bg-black/5">Panduan</a>
+        <a href="/about/" class="rounded-xl px-3 py-2.5 hover:bg-black/5">Tentang</a>
+        <a href="/contact/" class="rounded-xl px-3 py-2.5 hover:bg-black/5">Kontak</a>
+        <a href="/en/" class="rounded-xl px-3 py-2.5 hover:bg-black/5">English</a>
+      </nav>
+    </div>
+
+    <!-- ==========================================
+         2. MAIN ROUNDED HERO CONTAINER
+    =========================================== -->
+    <main id="main" class="hero-metallic-surface rounded-t-[26px] rounded-b-[16px] px-5 sm:px-10 lg:px-16 pt-10 sm:pt-16 relative overflow-hidden">
+
+      <div class="max-w-[1280px] mx-auto grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-6 items-center">
+
+        <!-- LEFT COLUMN: HEADLINE, TRUST, CTAS -->
+        <div class="xl:col-span-6 flex flex-col items-start z-20 xl:pr-6 rise">
+
+          <!-- Badge row -->
+          <div class="flex items-center gap-3.5 mb-7">
+            <div class="w-11 h-11 rounded-full bg-[#0A0A0C] flex items-center justify-center shadow-sm shrink-0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
+                <path d="m5 12 4 4L19 6" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-serifDisplay font-bold text-[18px] leading-tight text-[#0D0D0F] tracking-[-0.01em]">
+                26 alat siap dipakai
+              </div>
+              <div class="text-[12.5px] text-[#262629] mt-0.5">
+                Gratis, tanpa daftar —
+                <a href="#alat" class="font-bold underline decoration-[#0D0D0F] underline-offset-2 hover:opacity-70">lihat katalog</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Editorial headline -->
+          <p class="font-sans text-[11px] sm:text-[12px] font-extrabold uppercase tracking-[0.3em] text-[#2A2A2E] mb-2.5">Pasti</p>
+          <h1 class="grow-headline text-[88px] sm:text-[118px] xl:text-[134px] select-none flex items-start">
+            <span class="sr-only">PastiBeres — alat online gratis yang diproses di browser</span>
+            <span aria-hidden="true">Beres</span>
+            <span aria-hidden="true" class="font-sans font-normal text-[48px] sm:text-[64px] xl:text-[72px] leading-none -ml-1 mt-2 sm:mt-3 text-[#FF511C]">+</span>
+          </h1>
+
+          <!-- Divider -->
+          <div class="w-full max-w-[490px] h-[1px] bg-black/10 mt-8 mb-6"></div>
+
+          <!-- Subheadline -->
+          <p class="text-[17px] sm:text-[19.5px] text-[#1D1D20] font-normal leading-[1.48] tracking-[-0.015em] max-w-[500px]">
+            Alat kecil yang menyelesaikan pekerjaan, tanpa drama. Kompres gambar, rapikan JSON, gabung PDF, sampai hitung subnet IP — semuanya diproses di perangkat Anda.
+          </p>
+
+          <!-- Trust row -->
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <div class="flex items-center -space-x-2.5">
+              <span class="grid size-10 place-items-center rounded-full bg-[#0A0A0C] text-white ring-2 ring-[#D9DADE]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]" aria-hidden="true">
+                  <path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </span>
+              <span class="grid size-10 place-items-center rounded-full bg-white text-[#0A0A0C] ring-2 ring-[#D9DADE]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]" aria-hidden="true">
+                  <rect x="4" y="4" width="16" height="16" rx="2" />
+                  <rect x="9" y="9" width="6" height="6" />
+                  <path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2" />
+                </svg>
+              </span>
+              <span class="grid size-10 place-items-center rounded-full bg-[#FF511C] text-white ring-2 ring-[#D9DADE]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]" aria-hidden="true">
+                  <path d="m5 12 4 4L19 6" />
+                </svg>
+              </span>
+            </div>
+
+            <div class="text-[12.5px] leading-[1.35] text-[#232326]">
+              <div class="font-semibold">File tidak pernah diunggah</div>
+              <div class="text-[#3A3A3E]">Semua diproses di browser Anda</div>
+            </div>
+
+            <div class="flex items-center gap-2.5 sm:pl-3 sm:border-l border-black/15 text-[13px] font-bold text-[#111113]">
+              <span class="text-[#55555A] font-normal" aria-hidden="true">/</span>
+              <span class="inline-flex items-baseline gap-1">
+                <span class="text-[17px] leading-none">0</span>
+                <span class="text-[10px] font-semibold uppercase tracking-wider text-[#55555A]">unggahan</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="w-full max-w-[490px] h-[1px] bg-black/10 mt-6 mb-9"></div>
+
+          <!-- CTA row -->
+          <div class="flex flex-wrap items-center gap-7">
+            <a href="#alat" id="exploreBtn" class="rounded-full bg-[#070708] hover:bg-[#1E1E22] text-white px-7 py-4 text-[13px] shadow-md transition-all active:scale-95">
+              <span class="font-bold">Jelajahi 26 alat</span>
+              <span class="font-normal text-white/80"> — Gratis</span>
+            </a>
+
+            <button type="button" id="howItWorksBtn" class="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#141416] group">
+              <span class="underline decoration-[#141416] underline-offset-4 group-hover:text-[#FF511C] group-hover:decoration-[#FF511C] transition-colors">
+                Cara kerjanya
+              </span>
+              <span class="text-[14px] leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: VISUAL SHOWCASE & FLOATING CARDS -->
+        <div class="xl:col-span-6 relative flex justify-center items-center min-h-[520px] sm:min-h-[620px] w-full max-w-[620px] xl:max-w-none mx-auto rise rise-delay-1">
+
+          <!-- Central orange studio card -->
+          <div class="orange-studio-card relative w-[min(280px,100%)] sm:w-[360px] lg:w-[380px] h-[500px] sm:h-[575px] rounded-[34px] overflow-hidden select-none">
+
+            <!-- Studio rim light -->
+            <div class="studio-rim-glow absolute inset-0 pointer-events-none z-10"></div>
+
+            <!-- Decorative grid + rings -->
+            <div class="absolute inset-0 opacity-[0.16]" style="background-image: linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px); background-size: 38px 38px;"></div>
+            <div class="absolute -right-16 -top-16 size-56 rounded-full border border-white/20"></div>
+            <div class="absolute -right-8 -top-8 size-40 rounded-full border border-white/20"></div>
+            <div class="absolute -left-20 bottom-10 size-64 rounded-full bg-white/10 blur-2xl"></div>
+
+            <!-- Editor-style label -->
+            <div class="absolute top-5 left-5 z-20 inline-flex items-center gap-2 rounded-full bg-black/20 px-3 py-1.5 text-[9.5px] font-bold uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm">
+              <span class="size-1.5 rounded-full bg-white"></span>
+              Pratinjau alat
+            </div>
+            <div class="absolute bottom-5 left-5 z-20 hidden text-[10px] font-semibold tracking-[0.18em] text-white/70 sm:block">01 / 26</div>
+            <div class="absolute bottom-5 right-5 z-20 hidden text-[10px] font-semibold tracking-[0.18em] text-white/70 sm:block">LOKAL</div>
+
+            <!-- Floating app window mockup -->
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[300px] rounded-[24px] bg-white/95 shadow-[0_28px_60px_-16px_rgba(50,18,6,0.45)] ring-1 ring-black/5 p-4 sm:p-5 z-20">
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="size-2 rounded-full bg-[#FF5F57]"></span>
+                  <span class="size-2 rounded-full bg-[#FEBC2E]"></span>
+                  <span class="size-2 rounded-full bg-[#28C840]"></span>
+                </div>
+                <span class="text-[8px] font-bold uppercase tracking-[0.14em] text-black/35">PastiBeres / Alat</span>
+              </div>
+
+              <!-- Drop zone -->
+              <div class="mt-4 rounded-2xl border border-dashed border-[#FF511C]/35 bg-[#FFF4EF] px-3 py-5 text-center">
+                <span class="mx-auto grid size-9 place-items-center rounded-xl bg-white text-[#FF511C] shadow-sm ring-1 ring-[#FF511C]/10">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true">
+                    <path d="M12 16V4" />
+                    <path d="m7 9 5-5 5 5" />
+                    <path d="M20 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2" />
+                  </svg>
+                </span>
+                <div class="mt-2.5 text-[11px] font-bold text-[#141416]">Lepas file di sini</div>
+                <div class="mt-0.5 text-[9px] font-medium text-black/40">JPG, PNG, WebP · maks 20 MB</div>
+              </div>
+
+              <!-- File row -->
+              <div class="mt-3 flex items-center gap-2.5 rounded-xl bg-[#F4F4F6] p-2.5">
+                <span class="grid size-8 shrink-0 place-items-center rounded-lg bg-white text-[#FF511C] ring-1 ring-black/5">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true">
+                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                    <circle cx="9" cy="9" r="2" />
+                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                  </svg>
+                </span>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center justify-between gap-2 text-[9px] font-semibold text-[#18181B]">
+                    <span class="truncate">foto-lamaran.jpg</span>
+                    <span class="shrink-0 text-[#FF511C]">−66%</span>
+                  </div>
+                  <div class="mt-1.5 h-1 w-full overflow-hidden rounded-full bg-black/10">
+                    <div class="h-full w-[66%] rounded-full bg-[#FF511C]"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action -->
+              <div class="mt-3 w-full rounded-full bg-[#0A0A0C] py-2.5 text-center text-[10px] font-bold text-white">
+                Unduh hasil · 812 KB
+              </div>
+              <div class="mt-2 text-center text-[8px] font-medium text-black/40">Diproses di perangkat · tidak diunggah</div>
+            </div>
+
+          </div>
+
+          <!-- FLOATING PILL 1 -->
+          <div class="question-pill absolute top-[20%] left-[2%] sm:left-[6%] xl:left-[8%] rounded-full pl-2.5 pr-5 sm:pr-6 py-2.5 flex items-center gap-2.5 sm:gap-3 z-30 cursor-default">
+            <span class="size-6 rounded-[8px] bg-[#19A974] flex items-center justify-center text-white shadow-sm">
+              <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <span class="text-[11px] sm:text-[12.5px] font-semibold text-[#18181B] pr-1">File tidak diunggah</span>
+          </div>
+
+          <!-- FLOATING PILL 2 -->
+          <div class="question-pill hidden sm:flex absolute top-[31.5%] left-[0%] xl:left-[1%] rounded-full pl-2.5 pr-6 py-2.5 items-center gap-3 z-30 cursor-default">
+            <span class="size-6 rounded-[8px] bg-[#2B99FF] flex items-center justify-center text-white shadow-sm">
+              <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <span class="text-[12.5px] font-semibold text-[#18181B] pr-1">Tanpa daftar</span>
+          </div>
+
+          <!-- FROSTED STAT CARD (TOP RIGHT) -->
+          <div class="frosted-stat-card float-a absolute top-[2%] right-[0%] hidden w-[142px] rounded-[26px] p-4 z-30 sm:block sm:w-[172px] sm:rounded-[28px] sm:p-6">
+            <div class="text-[9px] sm:text-[10px] font-semibold tracking-[0.06em] uppercase text-[#2A2A2E] flex items-center gap-1">
+              <span aria-hidden="true">—</span>
+              <span>Total</span>
+            </div>
+            <div class="mt-2 sm:mt-3 font-sans font-extrabold text-[36px] sm:text-[44px] leading-none tracking-[-0.03em] text-[#0D0D0F]">
+              26
+            </div>
+            <div class="mt-2 sm:mt-2.5 text-[11px] sm:text-[12.5px] font-medium leading-[1.35] text-[#222226]">
+              alat siap dipakai<br />tanpa biaya
+            </div>
+          </div>
+
+          <!-- FROSTED PRODUCT CARD (BOTTOM RIGHT) -->
+          <div class="frosted-product-card float-b absolute bottom-[2%] right-0 sm:right-[1%] xl:right-[1.5%] w-[min(255px,100%)] sm:w-[335px] rounded-[26px] sm:rounded-[30px] p-3 sm:p-4 flex items-center gap-3 sm:gap-4 z-30">
+
+            <div class="relative grid size-[84px] sm:size-[112px] shrink-0 place-items-center overflow-hidden rounded-[18px] sm:rounded-[20px] bg-[#C8C9CE] shadow-inner">
+              <div class="absolute inset-0 bg-gradient-to-br from-[#FF8A5B] via-[#FF5A24] to-[#E33B0A]"></div>
+              <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px); background-size: 18px 18px;"></div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="relative size-8 sm:size-10 drop-shadow" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                <circle cx="9" cy="9" r="2" />
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+              </svg>
+            </div>
+
+            <div class="flex min-w-0 flex-col items-start pr-1">
+              <div class="text-[12.5px] sm:text-[14px] font-bold leading-[1.2] text-[#18181B]">
+                Kompres Gambar<br />
+                <span class="text-[10.5px] sm:text-[12px] font-medium text-[#55555A]">&amp; Konverter WebP</span>
+              </div>
+
+              <div class="mt-1.5 sm:mt-2 font-sans font-extrabold text-[18px] sm:text-[22px] tracking-[-0.02em] text-[#0D0D0F] leading-none">
+                −66%
+              </div>
+
+              <div class="mt-2 inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 shadow-sm">
+                <span class="size-1.5 rounded-full bg-[#19A974]"></span>
+                <span class="text-[10px] sm:text-[11px] font-bold text-[#141416]">100% lokal</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- STATS STRIP -->
+      <div class="max-w-[1280px] mx-auto mt-10 sm:mt-14 grid grid-cols-2 lg:grid-cols-4">
+        <div class="py-6 sm:py-7 border-t border-black/10 lg:border-t-0 lg:border-l lg:first:border-l-0 lg:pl-8 lg:first:pl-0">
+          <div class="font-serifDisplay text-3xl sm:text-4xl font-semibold text-[#0D0D0F] leading-none">26</div>
+          <div class="mt-2 text-[11.5px] text-[#4A4A4E]">alat siap dipakai</div>
+        </div>
+        <div class="py-6 sm:py-7 border-t border-black/10 lg:border-t-0 lg:border-l border-black/10 lg:pl-8">
+          <div class="font-serifDisplay text-3xl sm:text-4xl font-semibold text-[#0D0D0F] leading-none">0</div>
+          <div class="mt-2 text-[11.5px] text-[#4A4A4E]">file diunggah ke server</div>
+        </div>
+        <div class="py-6 sm:py-7 border-t border-black/10 lg:border-t-0 lg:border-l border-black/10 lg:pl-8">
+          <div class="font-serifDisplay text-3xl sm:text-4xl font-semibold text-[#0D0D0F] leading-none">100%</div>
+          <div class="mt-2 text-[11.5px] text-[#4A4A4E]">diproses di browser</div>
+        </div>
+        <div class="py-6 sm:py-7 border-t border-black/10 lg:border-t-0 lg:border-l border-black/10 lg:pl-8">
+          <div class="font-serifDisplay text-3xl sm:text-4xl font-semibold text-[#0D0D0F] leading-none">Rp0</div>
+          <div class="mt-2 text-[11.5px] text-[#4A4A4E]">gratis selamanya</div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- ==========================================
+       3. KATALOG ALAT
+  =========================================== -->
+  <section id="alat" class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8 py-14 sm:py-20" aria-labelledby="katalog">
+
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <p class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#FF511C]">Katalog alat</p>
+        <h2 id="katalog" class="mt-3 font-serifDisplay text-3xl sm:text-[42px] leading-[1.05] tracking-[-0.025em] text-[#0D0D0F]">
+          Kecil-kecil, tapi bikin beres.
+        </h2>
+        <p class="mt-3 text-[13.5px] text-[#55555A]">
+          <span class="font-semibold text-[#141416]">26 alat</span> · semua aktif · tanpa unggah file
+        </p>
+      </div>
+
+      <div class="relative w-full lg:max-w-sm">
+        <label for="pb-search" class="sr-only">Cari alat: json, pdf, subnet, qr…</label>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-[#77777C]" aria-hidden="true">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input
+          id="pb-search"
+          type="search"
+          data-pb-search
+          autocomplete="off"
+          placeholder="Cari alat: json, pdf, subnet, qr…"
+          class="w-full rounded-full border border-black/10 bg-[#FAFAF9] py-3.5 pl-11 pr-12 text-[13px] text-[#141416] placeholder:text-[#8A8A90] transition focus:border-[#FF511C]/50 focus:bg-white focus:outline-none focus:ring-4 focus:ring-[#FF511C]/10"
+        />
+        <kbd class="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 rounded-md border border-black/10 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-[#8A8A90] sm:block">/</kbd>
+      </div>
+    </div>
+
+    <!-- Category filters -->
+    <div class="mt-6 flex flex-wrap gap-2" role="group" aria-label="Filter kategori">
+      <button type="button" class="chip rounded-full px-4 py-2 text-[12px] font-semibold" data-pb-chip data-cat="all" data-active="true" aria-pressed="true">Semua</button>
+      <button type="button" class="chip rounded-full px-4 py-2 text-[12px] font-semibold" data-pb-chip data-cat="network" data-active="false" aria-pressed="false">Jaringan</button>
+      <button type="button" class="chip rounded-full px-4 py-2 text-[12px] font-semibold" data-pb-chip data-cat="media" data-active="false" aria-pressed="false">Media &amp; File</button>
+      <button type="button" class="chip rounded-full px-4 py-2 text-[12px] font-semibold" data-pb-chip data-cat="dev" data-active="false" aria-pressed="false">Developer</button>
+      <button type="button" class="chip rounded-full px-4 py-2 text-[12px] font-semibold" data-pb-chip data-cat="utility" data-active="false" aria-pressed="false">Utilitas</button>
+      <button type="button" class="chip rounded-full px-4 py-2 text-[12px] font-semibold" data-pb-chip data-cat="seo" data-active="false" aria-pressed="false">SEO</button>
+    </div>
+
+    <!-- Tool cards -->
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="/tools/json-formatter/" data-tool-card data-category="dev" data-search="json formatter &amp; validator json formatter &amp; validator rapikan, validasi, dan perkecil json langsung di browser. developer developer json formatter validator beautify minify prettify json formatter online" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1"/>
+<path d="M16 3h1a2 2 0 0 1 2 2v5a2 2 0 0 0 2 2 2 2 0 0 0-2 2v5a2 2 0 0 1-2 2h-1"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">JSON Formatter &amp; Validator</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Rapikan, validasi, dan perkecil JSON langsung di browser.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Developer</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/image-compressor/" data-tool-card data-category="media" data-search="kompresor gambar &amp; konverter webp image compressor &amp; webp converter perkecil jpg, png, dan webp tanpa upload ke server. media &amp; file media &amp; files compress image image compressor webp converter png to webp reduce image size" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+<circle cx="9" cy="9" r="2"/>
+<path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Kompresor Gambar &amp; Konverter WebP</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Perkecil JPG, PNG, dan WebP tanpa upload ke server.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Media & File</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/pdf-merge-split/" data-tool-card data-category="media" data-search="gabung &amp; pisah pdf merge &amp; split pdf susun ulang halaman pdf di browser, tanpa unggah dokumen. media &amp; file media &amp; files merge pdf split pdf gabung pdf pisah pdf pdf tools online" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+<path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+<path d="M10 9H8"/>
+<path d="M16 13H8"/>
+<path d="M16 17H8"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Gabung &amp; Pisah PDF</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Susun ulang halaman PDF di browser, tanpa unggah dokumen.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Media & File</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/qr-generator/" data-tool-card data-category="utility" data-search="generator qr code qr code generator buat qr untuk url, teks, wi-fi, dan kontak — unduh png atau svg. utilitas utilities qr code generator qr code buat qr code qr png svg qris qr" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <rect width="5" height="5" x="3" y="3" rx="1"/>
+<rect width="5" height="5" x="16" y="3" rx="1"/>
+<rect width="5" height="5" x="3" y="16" rx="1"/>
+<path d="M21 16h-3a2 2 0 0 0-2 2v3"/>
+<path d="M21 21v.01"/>
+<path d="M12 7v3a2 2 0 0 1-2 2H7"/>
+<path d="M3 12h.01"/>
+<path d="M12 3h.01"/>
+<path d="M12 16v.01"/>
+<path d="M16 12h1"/>
+<path d="M21 12v.01"/>
+<path d="M12 21v-1"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Generator QR Code</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Buat QR untuk URL, teks, Wi-Fi, dan kontak — unduh PNG atau SVG.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Utilitas</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/subnet-planner/" data-tool-card data-category="network" data-search="perencana subnet &amp; ip pool subnet &amp; ip pool planner hitung cidr, vlsm, dan pool pppoe tanpa risiko salah ketik. jaringan network subnet calculator ip pool vlsm cidr kalkulator subnet pppoe pool" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <rect x="16" y="16" width="6" height="6" rx="1"/>
+<rect x="2" y="16" width="6" height="6" rx="1"/>
+<rect x="9" y="2" width="6" height="6" rx="1"/>
+<path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/>
+<path d="M12 12V8"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Perencana Subnet &amp; IP Pool</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Hitung CIDR, VLSM, dan pool PPPoE tanpa risiko salah ketik.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Jaringan</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/base64-encoder/" data-tool-card data-category="dev" data-search="base64 encode &amp; decode base64 encode &amp; decode ubah teks ke base64 dan sebaliknya, langsung di browser. developer developer base64 encode base64 decode base64 online base64url" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6"/>
+<polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Base64 Encode &amp; Decode</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Ubah teks ke Base64 dan sebaliknya, langsung di browser.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Developer</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/hash-generator/" data-tool-card data-category="dev" data-search="hash generator (md5, sha-1, sha-256, sha-512) hash generator (md5, sha-1, sha-256, sha-512) buat hash dari teks atau berkas untuk verifikasi cepat. developer developer hash generator md5 sha1 sha256 checksum" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <line x1="4" x2="20" y1="9" y2="9"/>
+<line x1="4" x2="20" y1="15" y2="15"/>
+<line x1="10" x2="8" y1="3" y2="21"/>
+<line x1="16" x2="14" y1="3" y2="21"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Hash Generator (MD5, SHA-1, SHA-256, SHA-512)</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Buat hash dari teks atau berkas untuk verifikasi cepat.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Developer</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/jwt-decoder/" data-tool-card data-category="dev" data-search="jwt decoder jwt decoder baca header, payload, dan masa berlaku token jwt. developer developer jwt decoder jwt parser decode jwt token inspector" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/>
+<path d="m21 2-9.6 9.6"/>
+<circle cx="7.5" cy="15.5" r="5.5"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">JWT Decoder</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Baca header, payload, dan masa berlaku token JWT.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Developer</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/pdf-compress/" data-tool-card data-category="media" data-search="kompres pdf compress pdf perkecil pdf dengan rasterisasi jpeg, langsung di browser. media &amp; file media &amp; files kompres pdf compress pdf perkecil pdf pdf compressor reduce pdf size" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+<path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+<path d="M12 18v-6"/>
+<path d="m9 15 3 3 3-3"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Kompres PDF</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Perkecil PDF dengan rasterisasi JPEG, langsung di browser.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Media & File</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/jpg-to-pdf/" data-tool-card data-category="media" data-search="konversi jpg ke pdf jpg to pdf converter gabungkan jpg, png, dan webp jadi satu pdf dengan ukuran halaman dan margin yang anda atur. media &amp; file media &amp; files jpg to pdf gambar ke pdf image to pdf png to pdf photo to pdf" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M18 22H4a2 2 0 0 1-2-2V6"/>
+<path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"/>
+<circle cx="12" cy="8" r="2"/>
+<rect width="16" height="16" x="6" y="2" rx="2"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Konversi JPG ke PDF</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Gabungkan JPG, PNG, dan WebP jadi satu PDF dengan ukuran halaman dan margin yang Anda atur.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Media & File</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/image-resize/" data-tool-card data-category="media" data-search="ubah ukuran, crop &amp; rotasi gambar resize, crop &amp; rotate image atur dimensi, crop, dan rotasi gambar tanpa mengunggah apa pun. media &amp; file media &amp; files resize image crop image ubah ukuran gambar perkecil foto resize foto" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M6 2v14a2 2 0 0 0 2 2h14"/>
+<path d="M18 22V8a2 2 0 0 0-2-2H2"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Ubah Ukuran, Crop &amp; Rotasi Gambar</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Atur dimensi, crop, dan rotasi gambar tanpa mengunggah apa pun.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Media & File</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/text-tools/" data-tool-card data-category="utility" data-search="penghitung kata &amp; konverter huruf word counter &amp; case converter hitung kata, ubah kapitalisasi, dan rapikan baris teks dalam satu panel. utilitas utilities word counter penghitung kata case converter hitung karakter slug generator" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <polyline points="4 7 4 4 20 4 20 7"/>
+<line x1="9" x2="15" y1="20" y2="20"/>
+<line x1="12" x2="12" y1="4" y2="20"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Penghitung Kata &amp; Konverter Huruf</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Hitung kata, ubah kapitalisasi, dan rapikan baris teks dalam satu panel.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Utilitas</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/password-generator/" data-tool-card data-category="utility" data-search="password generator &amp; uuid v4 password generator &amp; uuid v4 buat password acak dan uuid v4 langsung di browser. utilitas utilities password generator generator password uuid generator strong password" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/>
+<path d="m21 2-9.6 9.6"/>
+<circle cx="7.5" cy="15.5" r="5.5"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Password Generator &amp; UUID v4</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Buat password acak dan UUID v4 langsung di browser.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Utilitas</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/unit-converter/" data-tool-card data-category="utility" data-search="konverter satuan &amp; kalkulator usia unit converter &amp; age calculator konversi satuan dan hitung usia dalam satu panel, tanpa unggah data. utilitas utilities unit converter konversi satuan kalkulator usia age calculator km ke mil" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/>
+<path d="m14.5 12.5 2-2"/>
+<path d="m11.5 9.5 2-2"/>
+<path d="m8.5 6.5 2-2"/>
+<path d="m17.5 15.5 2-2"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Konverter Satuan &amp; Kalkulator Usia</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Konversi satuan dan hitung usia dalam satu panel, tanpa unggah data.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Utilitas</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/serp-preview/" data-tool-card data-category="seo" data-search="pratinjau serp &amp; kartu sosial serp &amp; social preview lihat dulu bagaimana judul, deskripsi, dan url anda tampil di google. seo seo serp preview google preview preview snippet meta preview social card preview" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+<path d="m21 21-4.3-4.3"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Pratinjau SERP &amp; Kartu Sosial</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Lihat dulu bagaimana judul, deskripsi, dan URL Anda tampil di Google.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">SEO</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/meta-tags/" data-tool-card data-category="seo" data-search="meta tag generator: seo, open graph &amp; twitter meta tag generator: seo, open graph &amp; twitter susun tag seo, open graph, dan twitter card dalam satu formulir. seo seo meta tag generator generator meta tag open graph twitter card og tags" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/>
+<circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Meta Tag Generator: SEO, Open Graph &amp; Twitter</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Susun tag SEO, Open Graph, dan Twitter Card dalam satu formulir.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">SEO</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/utm-builder/" data-tool-card data-category="seo" data-search="utm campaign url builder utm campaign url builder susun tautan kampanye ber-utm dan baca parameternya kembali. seo seo utm builder utm generator campaign url google analytics utm" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">UTM Campaign URL Builder</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Susun tautan kampanye ber-UTM dan baca parameternya kembali.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">SEO</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/robots-generator/" data-tool-card data-category="seo" data-search="generator robots.txt robots.txt generator susun robots.txt dengan grup crawler, aturan path, dan sitemap. seo seo robots.txt generator generator robots txt disallow sitemap robots" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M12 8V4H8"/>
+<rect width="16" height="12" x="4" y="8" rx="2"/>
+<path d="M2 14h2"/>
+<path d="M20 14h2"/>
+<path d="M15 13v2"/>
+<path d="M9 13v2"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Generator robots.txt</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Susun robots.txt dengan grup crawler, aturan path, dan sitemap.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">SEO</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/schema-generator/" data-tool-card data-category="seo" data-search="generator schema.org &amp; json-ld schema.org &amp; json-ld generator susun json-ld schema.org yang valid tanpa menghafal properti. seo seo schema generator json-ld structured data rich results schema.org" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+<path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+<path d="m10 12-2 2 2 2"/>
+<path d="m14 16 2-2-2-2"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Generator Schema.org &amp; JSON-LD</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Susun JSON-LD Schema.org yang valid tanpa menghafal properti.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">SEO</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/head-audit/" data-tool-card data-category="seo" data-search="audit seo on-page (head &amp; struktur) on-page seo auditor (head &amp; structure) periksa title, meta, heading, alt, dan schema dari html yang anda tempel. seo seo seo audit on page seo cek meta tag h1 checker html head analyzer" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+<path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+<path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+<path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+<path d="M7 12h10"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Audit SEO On-Page (Head &amp; Struktur)</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Periksa title, meta, heading, alt, dan schema dari HTML yang Anda tempel.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">SEO</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/favicon-generator/" data-tool-card data-category="utility" data-search="generator favicon &amp; manifest web app favicon &amp; web app manifest generator buat favicon lengkap dan manifest dari satu gambar, di browser. utilitas utilities favicon generator buat favicon favicon ico apple touch icon web app manifest" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+<path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+<circle cx="10" cy="12" r="2"/>
+<path d="m20 17-1.296-1.296a2.41 2.41 0 0 0-3.408 0L9 22"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Generator Favicon &amp; Manifest Web App</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Buat favicon lengkap dan manifest dari satu gambar, di browser.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Utilitas</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/color-tools/" data-tool-card data-category="utility" data-search="alat warna: picker, hsl/rgb &amp; cek kontras color toolkit: picker, hsl/rgb &amp; contrast checker pilih warna, salin kode, dan uji kontras wcag dalam satu panel. utilitas utilities color picker contrast checker hsl converter wcag contrast palet warna" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+<circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+<circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+<circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Alat Warna: Picker, HSL/RGB &amp; Cek Kontras</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Pilih warna, salin kode, dan uji kontras WCAG dalam satu panel.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Utilitas</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/json-csv/" data-tool-card data-category="dev" data-search="konverter json ke csv json to csv converter ubah json menjadi csv dan kembali, langsung di browser. developer developer json to csv csv to json konversi csv excel json csv converter" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <path d="M12 3v18"/>
+<rect width="18" height="18" x="3" y="3" rx="2"/>
+<path d="M3 9h18"/>
+<path d="M3 15h18"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Konverter JSON ke CSV</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Ubah JSON menjadi CSV dan kembali, langsung di browser.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Developer</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/timestamp-converter/" data-tool-card data-category="dev" data-search="konverter epoch &amp; timestamp epoch &amp; timestamp converter konversi epoch ke tanggal dan sebaliknya, lengkap dengan zona waktu. developer developer epoch converter unix timestamp konversi timestamp timestamp to date" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+<polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Konverter Epoch &amp; Timestamp</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Konversi epoch ke tanggal dan sebaliknya, lengkap dengan zona waktu.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Developer</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/pdf-to-jpg/" data-tool-card data-category="media" data-search="pdf ke jpg pdf to jpg ubah halaman pdf menjadi gambar jpg atau png, langsung di browser. media &amp; file media &amp; files pdf to jpg pdf ke gambar extract images pdf pdf to png" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+<circle cx="9" cy="9" r="2"/>
+<path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">PDF ke JPG</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Ubah halaman PDF menjadi gambar JPG atau PNG, langsung di browser.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Media & File</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      <a href="/tools/regex-tester/" data-tool-card data-category="dev" data-search="regex tester &amp; debugger regex tester &amp; debugger uji pola regex, baca grup tangkapan, dan coba replace langsung di browser. developer developer regex tester regex online uji regex regex replace regex indonesia" class="group relative flex h-full flex-col gap-4 rounded-[24px] border border-black/[0.07] bg-white p-5 sm:p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/40 hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.35)]">
+        <div class="flex items-start justify-between gap-3">
+          <span class="grid size-12 place-items-center rounded-2xl bg-[#FF511C]/10 ring-1 ring-[#FF511C]/15">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5 text-[#FF511C]" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6"/>
+<polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-2.5 py-1 text-[9.5px] font-bold uppercase tracking-wider text-emerald-700">
+            <span class="size-1.5 rounded-full bg-emerald-500"></span>Aktif
+          </span>
+        </div>
+
+        <div>
+          <h3 class="text-[16px] font-bold leading-snug tracking-[-0.01em] text-[#0D0D0E] transition-colors group-hover:text-[#FF511C]">Regex Tester &amp; Debugger</h3>
+          <p class="mt-1.5 text-[12.5px] leading-relaxed text-[#55555A]">Uji pola regex, baca grup tangkapan, dan coba replace langsung di browser.</p>
+        </div>
+
+        <div class="mt-auto flex items-center justify-between border-t border-black/[0.06] pt-3.5 text-[11.5px]">
+          <span class="font-medium text-[#77777C]">Developer</span>
+          <span class="inline-flex items-center gap-1 font-bold text-[#141416] transition-colors group-hover:text-[#FF511C]">
+            Buka alat
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <p data-pb-empty class="mt-8 hidden rounded-2xl border border-black/10 bg-[#FAFAF9] p-8 text-center text-sm text-[#55555A]" role="status">
+      Tidak ada alat yang cocok. Coba kata kunci lain.
+    </p>
+    <p data-pb-count class="mt-5 hidden text-xs font-medium text-[#77777C]" aria-live="polite"></p>
+
+  </section>
+
+  <!-- ==========================================
+       4. PANDUAN
+  =========================================== -->
+  <section id="panduan" class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8 pb-4" aria-labelledby="panduan-title">
+
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-t border-black/10 pt-10">
+      <div>
+        <p class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#FF511C]">Panduan</p>
+        <h2 id="panduan-title" class="mt-2 font-serifDisplay text-3xl sm:text-4xl leading-[1.08] tracking-[-0.02em] text-[#0D0D0F]">
+          Baca dulu, biar makin beres.
+        </h2>
+      </div>
+      <a href="/artikel/" class="inline-flex items-center gap-1.5 text-[12.5px] font-bold text-[#141416] group">
+        <span class="underline decoration-[#141416] underline-offset-4 group-hover:text-[#FF511C] group-hover:decoration-[#FF511C] transition-colors">Lihat semua panduan</span>
+        <span class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="mt-6 grid gap-4 sm:grid-cols-3">
+
+      <a href="/artikel/kompres-pdf-tanpa-upload/" class="group relative flex h-full flex-col rounded-[24px] border border-black/[0.07] bg-[#FAFAF9] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/35 hover:bg-white hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.3)]">
+        <span class="font-serifDisplay text-4xl font-semibold leading-none text-black/15 transition-colors group-hover:text-[#FF511C]/35">01</span>
+        <h3 class="mt-7 text-[15.5px] font-bold leading-snug tracking-[-0.01em] text-[#141416] group-hover:text-[#FF511C] transition-colors">
+          Kompres PDF Tanpa Upload: Cara Kerja dan Batasnya
+        </h3>
+        <p class="mt-2 text-[12.5px] leading-relaxed text-[#55555A]">
+          Memperkecil ukuran PDF di browser tanpa unggah: apa yang terjadi pada teks, cara memilih DPI, dan kapan hasilnya mengecewakan.
+        </p>
+        <div class="mt-auto flex items-center justify-between pt-6 text-[11px] font-semibold text-[#77777C]">
+          <span>3 menit baca</span>
+          <span class="inline-flex items-center gap-1 text-[#141416] group-hover:text-[#FF511C] transition-colors">Baca <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+      <a href="/artikel/ukuran-foto-lamaran-kerja/" class="group relative flex h-full flex-col rounded-[24px] border border-black/[0.07] bg-[#FAFAF9] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/35 hover:bg-white hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.3)]">
+        <span class="font-serifDisplay text-4xl font-semibold leading-none text-black/15 transition-colors group-hover:text-[#FF511C]/35">02</span>
+        <h3 class="mt-7 text-[15.5px] font-bold leading-snug tracking-[-0.01em] text-[#141416] group-hover:text-[#FF511C] transition-colors">
+          Ukuran Foto Lamaran Kerja 2×3, 3×4, 4×6 &amp; Cara Resize
+        </h3>
+        <p class="mt-2 text-[12.5px] leading-relaxed text-[#55555A]">
+          Ukuran cetak, batas berkas portal, dan urutan langkah yang benar agar foto lamaran tetap tajam setelah diperkecil.
+        </p>
+        <div class="mt-auto flex items-center justify-between pt-6 text-[11px] font-semibold text-[#77777C]">
+          <span>5 menit baca</span>
+          <span class="inline-flex items-center gap-1 text-[#141416] group-hover:text-[#FF511C] transition-colors">Baca <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+      <a href="/artikel/apa-itu-base64/" class="group relative flex h-full flex-col rounded-[24px] border border-black/[0.07] bg-[#FAFAF9] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FF511C]/35 hover:bg-white hover:shadow-[0_24px_50px_-30px_rgba(13,13,14,0.3)]">
+        <span class="font-serifDisplay text-4xl font-semibold leading-none text-black/15 transition-colors group-hover:text-[#FF511C]/35">03</span>
+        <h3 class="mt-7 text-[15.5px] font-bold leading-snug tracking-[-0.01em] text-[#141416] group-hover:text-[#FF511C] transition-colors">
+          Apa Itu Base64 dan Kapan Sebaiknya Dipakai
+        </h3>
+        <p class="mt-2 text-[12.5px] leading-relaxed text-[#55555A]">
+          Cara Base64 mengubah byte menjadi teks, kenapa hasilnya 33% lebih besar, dan kenapa ia bukan enkripsi.
+        </p>
+        <div class="mt-auto flex items-center justify-between pt-6 text-[11px] font-semibold text-[#77777C]">
+          <span>5 menit baca</span>
+          <span class="inline-flex items-center gap-1 text-[#141416] group-hover:text-[#FF511C] transition-colors">Baca <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       5. CLOSING CTA
+  =========================================== -->
+  <section class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20">
+    <div class="relative overflow-hidden rounded-[32px] bg-[#0A0A0C] px-6 py-12 sm:px-12 sm:py-16">
+      <div class="pointer-events-none absolute -right-24 -top-24 size-80 rounded-full bg-[#FF511C]/25 blur-3xl"></div>
+      <div class="pointer-events-none absolute -left-20 -bottom-28 size-72 rounded-full bg-[#2B99FF]/15 blur-3xl"></div>
+
+      <div class="relative grid items-center gap-9 lg:grid-cols-2">
+        <div>
+          <p class="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#FF8A5B]">Gratis, tanpa daftar</p>
+          <h2 class="mt-3 font-serifDisplay text-4xl sm:text-5xl leading-[1.02] tracking-[-0.03em] text-white">
+            Siap bikin <br />semuanya beres?
+          </h2>
+          <p class="mt-4 max-w-md text-[13.5px] leading-relaxed text-white/60">
+            Buka alat, kerjakan, unduh hasilnya. Tidak ada file yang dikirim ke server — dan tidak ada biaya yang muncul tiba-tiba.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 lg:justify-end">
+          <a href="#alat" class="rounded-full bg-white px-7 py-4 text-[13px] font-bold text-[#0A0A0C] transition hover:bg-[#FF511C] hover:text-white active:scale-95">
+            Jelajahi 26 alat
+          </a>
+          <a href="/about/" class="inline-flex items-center gap-1.5 rounded-full border border-white/25 px-7 py-4 text-[13px] font-bold text-white transition hover:border-white/50 hover:bg-white/5">
+            Tentang PastiBeres
+            <span class="text-[14px] leading-none" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       6. FOOTER
+  =========================================== -->
+  <footer class="mt-16 sm:mt-20 border-t border-black/10 bg-[#FAFAF9]">
+    <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8 py-12">
+
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-2.5">
+            <span class="grid size-8 place-items-center rounded-[10px] bg-[#0A0A0C] text-white">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true">
+                <path d="m9 12 2 2 4-4" />
+                <rect x="3" y="3" width="18" height="18" rx="4" />
+              </svg>
+            </span>
+            <span class="text-[16px] font-extrabold tracking-[-0.02em] text-[#111113]">PastiBeres</span>
+            <span class="rounded-full border border-black/10 px-2 py-0.5 text-[10px] font-semibold text-black/45">pastiberes.web.id</span>
+          </div>
+          <p class="mt-4 max-w-md text-[13px] leading-relaxed text-[#55555A]">
+            Alat di PastiBeres berjalan di browser Anda. Kami tidak mengunggah, menyimpan, atau membaca isi file dan teks yang Anda proses.
+          </p>
+          <p class="mt-3 max-w-md text-[11px] leading-relaxed text-[#77777C]">
+            Situs ini memakai cookie untuk iklan dan analitik anonim. Anda bisa menolaknya lewat pengaturan peramban.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#141416]">Alat</h2>
+          <ul class="mt-4 space-y-2.5 text-[13px] text-[#55555A]">
+            <li><a class="transition hover:text-[#FF511C]" href="/">Semua alat</a></li>
+            <li><a class="transition hover:text-[#FF511C]" href="/artikel/">Panduan</a></li>
+            <li><a class="transition hover:text-[#FF511C]" href="/about/">Tentang PastiBeres</a></li>
+            <li><a class="transition hover:text-[#FF511C]" href="/contact/">Kontak</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#141416]">Legal</h2>
+          <ul class="mt-4 space-y-2.5 text-[13px] text-[#55555A]">
+            <li><a class="transition hover:text-[#FF511C]" href="/privacy-policy/">Kebijakan Privasi</a></li>
+            <li><a class="transition hover:text-[#FF511C]" href="/terms/">Ketentuan Layanan</a></li>
+            <li><a class="transition hover:text-[#FF511C]" href="/en/" hreflang="en">English site</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-10 flex flex-col gap-2 border-t border-black/10 pt-6 text-[11px] text-[#77777C] sm:flex-row sm:items-center sm:justify-between">
+        <p>© 2026 PastiBeres. Dibuat dan dirawat oleh PT Semesta Multitekno Indonesia.</p>
+        <p>Semesta Multitekno Indonesia · Banyuwangi</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       7. HOW IT WORKS MODAL
+  =========================================== -->
+  <div id="howModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="relative w-full max-w-md rounded-[28px] border border-black/10 bg-white p-7 shadow-2xl">
+
+      <button id="closeModal" type="button" class="absolute top-5 right-5 grid size-8 place-items-center rounded-full bg-black/5 text-[#111] transition hover:bg-black/10" aria-label="Tutup dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="size-4" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+
+      <div class="flex items-center gap-2.5 mb-4">
+        <div class="grid size-8 place-items-center rounded-[9px] bg-[#0A0A0C] text-white">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true">
+            <path d="m9 12 2 2 4-4" />
+            <rect x="3" y="3" width="18" height="18" rx="4" />
+          </svg>
+        </div>
+        <span class="text-[12px] font-bold text-[#111]">PastiBeres / Cara kerja</span>
+      </div>
+
+      <h3 id="modalTitle" class="font-serifDisplay text-[28px] font-bold leading-[1.08] tracking-[-0.02em] text-[#0D0D0F]">
+        Tiga langkah, <br />langsung beres.
+      </h3>
+      <p class="mt-2 text-[12.5px] leading-relaxed text-[#55555A]">
+        Tidak perlu akun, tidak perlu unggah. Semua alat bekerja langsung di perangkat Anda.
+      </p>
+
+      <ol class="mt-5 space-y-3">
+        <li class="flex items-start gap-3 rounded-2xl bg-[#F4F4F6] p-3.5">
+          <span class="grid size-6 shrink-0 place-items-center rounded-full bg-[#0A0A0C] text-[10px] font-bold text-white">1</span>
+          <div>
+            <div class="text-[12.5px] font-bold text-[#141416]">Pilih alat</div>
+            <div class="mt-0.5 text-[11.5px] leading-relaxed text-[#55555A]">26 alat untuk file, teks, developer, jaringan, dan SEO.</div>
+          </div>
+        </li>
+        <li class="flex items-start gap-3 rounded-2xl bg-[#F4F4F6] p-3.5">
+          <span class="grid size-6 shrink-0 place-items-center rounded-full bg-[#0A0A0C] text-[10px] font-bold text-white">2</span>
+          <div>
+            <div class="text-[12.5px] font-bold text-[#141416]">Kerjakan di browser</div>
+            <div class="mt-0.5 text-[11.5px] leading-relaxed text-[#55555A]">File diproses di perangkat, tidak dikirim ke server.</div>
+          </div>
+        </li>
+        <li class="flex items-start gap-3 rounded-2xl bg-[#F4F4F6] p-3.5">
+          <span class="grid size-6 shrink-0 place-items-center rounded-full bg-[#0A0A0C] text-[10px] font-bold text-white">3</span>
+          <div>
+            <div class="text-[12.5px] font-bold text-[#141416]">Unduh hasil</div>
+            <div class="mt-0.5 text-[11.5px] leading-relaxed text-[#55555A]">Selesai tanpa akun, tanpa biaya, tanpa watermark.</div>
+          </div>
+        </li>
+      </ol>
+
+      <button id="modalActionBtn" type="button" class="mt-5 w-full rounded-full bg-[#09090A] py-3.5 text-[12px] font-bold text-white transition hover:bg-[#222] active:scale-[0.99]">
+        Jelajahi alat →
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       8. INTERACTIVE SCRIPT
+  =========================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------- Search + category filter ---------- */
+      const searchInput = document.querySelector('[data-pb-search]');
+      const cards = Array.from(document.querySelectorAll('[data-tool-card]'));
+      const chips = Array.from(document.querySelectorAll('[data-pb-chip]'));
+      const emptyState = document.querySelector('[data-pb-empty]');
+      const countLabel = document.querySelector('[data-pb-count]');
+
+      let activeCategory = 'all';
+      let query = '';
+
+      const normalize = (value) => String(value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+      function applyFilter() {
+        const needle = normalize(query.trim());
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const haystack = normalize(card.dataset.search || '');
+          const matchesQuery = needle.length === 0 || haystack.includes(needle);
+          const matchesCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
+          const show = matchesQuery && matchesCategory;
+          card.classList.toggle('hidden', !show);
+          if (show) visible += 1;
+        });
+
+        if (emptyState) emptyState.classList.toggle('hidden', visible > 0);
+
+        if (countLabel) {
+          const isFiltered = visible !== cards.length;
+          countLabel.textContent = isFiltered ? visible + ' / ' + cards.length + ' alat ditampilkan' : '';
+          countLabel.classList.toggle('hidden', !isFiltered);
+        }
+
+        const url = new URL(window.location.href);
+        if (query.trim()) url.searchParams.set('q', query.trim());
+        else url.searchParams.delete('q');
+        window.history.replaceState(null, '', url);
+      }
+
+      searchInput?.addEventListener('input', () => {
+        query = searchInput.value;
+        applyFilter();
+      });
+
+      chips.forEach((chip) => {
+        chip.addEventListener('click', () => {
+          activeCategory = chip.dataset.cat || 'all';
+          chips.forEach((item) => {
+            const isActive = item === chip;
+            item.dataset.active = String(isActive);
+            item.setAttribute('aria-pressed', String(isActive));
+          });
+          applyFilter();
+        });
+      });
+
+      window.addEventListener('pb:search', (event) => {
+        if (searchInput && typeof event.detail === 'string') {
+          searchInput.value = event.detail;
+          query = event.detail;
+          applyFilter();
+        }
+      });
+
+      /* Restore ?q= from shared links */
+      const initialQuery = new URLSearchParams(window.location.search).get('q');
+      if (initialQuery && searchInput) {
+        searchInput.value = initialQuery;
+        query = initialQuery;
+      }
+      applyFilter();
+
+      /* ---------- Focus search from hero CTA ---------- */
+      document.getElementById('exploreBtn')?.addEventListener('click', () => {
+        window.setTimeout(() => {
+          searchInput?.focus({ preventScroll: true });
+        }, 650);
+      });
+
+      /* ---------- Keyboard shortcut: "/" focuses search ---------- */
+      document.addEventListener('keydown', (event) => {
+        const tag = (event.target && event.target.tagName) || '';
+        const isTyping = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || event.target.isContentEditable;
+        const modalIsOpen = modal && !modal.classList.contains('hidden');
+        if (event.key === '/' && !isTyping && !modalIsOpen) {
+          event.preventDefault();
+          searchInput?.focus();
+          searchInput?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+
+      /* ---------- Mobile menu ---------- */
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const menuIconOpen = document.getElementById('menuIconOpen');
+      const menuIconClose = document.getElementById('menuIconClose');
+
+      function setMenu(open) {
+        mobileNav?.classList.toggle('hidden', !open);
+        menuToggle?.setAttribute('aria-expanded', String(open));
+        menuToggle?.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+        menuIconOpen?.classList.toggle('hidden', open);
+        menuIconClose?.classList.toggle('hidden', !open);
+      }
+
+      menuToggle?.addEventListener('click', () => {
+        setMenu(mobileNav?.classList.contains('hidden'));
+      });
+
+      mobileNav?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMenu(false));
+      });
+
+      document.getElementById('headerCta')?.addEventListener('click', () => setMenu(false));
+
+      /* ---------- How it works modal ---------- */
+      const modal = document.getElementById('howModal');
+      const openModalBtn = document.getElementById('howItWorksBtn');
+      const closeModalBtn = document.getElementById('closeModal');
+      const modalActionBtn = document.getElementById('modalActionBtn');
+      let lastFocused = null;
+
+      function openModal() {
+        if (!modal) return;
+        lastFocused = document.activeElement;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        closeModalBtn?.focus();
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+      }
+
+      openModalBtn?.addEventListener('click', openModal);
+      closeModalBtn?.addEventListener('click', closeModal);
+
+      modalActionBtn?.addEventListener('click', () => {
+        closeModal();
+        document.getElementById('alat')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      modal?.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal && !modal.classList.contains('hidden')) closeModal();
+      });
+
+      /* Keep focus inside the dialog */
+      modal?.addEventListener('keydown', (event) => {
+        if (event.key !== 'Tab') return;
+        const focusable = modal.querySelectorAll('button, a[href], input, [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
